@@ -1,1 +1,115 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand - Wearz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
+<!-- HEADER -->
+<header class="navbar">
+  <div class="logo">Wearz</div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="#brandsSection">Brands</a>
+    <a href="#footer">Contatti</a>
+  </nav>
+</header>
+
+<!-- SEZIONE BRAND -->
+<section id="brandsSection" class="brands-section">
+  <h1>Brand Più Famosi</h1>
+
+  <!-- Barra di ricerca -->
+  <input type="text" id="brandSearch" placeholder="Cerca brand..." />
+
+  <!-- Lettere dell'alfabeto -->
+  <div id="alphabet" class="alphabet"></div>
+
+  <!-- Lista brand filtrati -->
+  <div id="brandList" class="brand-list"></div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-section">
+    <h3>Termini e Condizioni</h3>
+    <p>I brand mostrati sono a scopo dimostrativo. I prezzi possono variare.</p>
+  </div>
+
+  <div class="footer-section">
+    <h3>Contattaci</h3>
+    <p>Email: support@wearz.it</p>
+    <p>Telefono: +39 348 765 4321</p>
+  </div>
+
+  <div class="footer-bottom">© 2026 Wearz</div>
+</footer>
+
+<!-- JS -->
+<script src="brands.js"></script>
+
+</body>
+</html>
+
+.brands-section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.brands-section input {
+  padding: 0.8rem 1rem;
+  border-radius: 14px;
+  border: 1px solid #e5e5e5;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.alphabet {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.alphabet button {
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.alphabet button:hover,
+.alphabet button.active {
+  background: #000;
+  color: #fff;
+}
+
+.brand-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.brand-item {
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background: #fff;
+  min-width: 120px;
+  text-align: center;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.brand-item:hover {
+  background: #000;
+  color: #fff;
+}
