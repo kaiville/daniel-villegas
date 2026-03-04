@@ -1,80 +1,58 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TechStore - Digital Showroom</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TechStore - Showroom Tecnologico</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header class="navbar">
   <div class="logo">TechStore</div>
-  <nav>
-    <ul class="nav-links">
-      <li><a href="#catalogo">Catalogo</a></li>
-      <li><a href="#contatti">Contatti</a></li>
-    </ul>
+  <nav class="nav-links">
+    <a href="#hero">Home</a>
+    <a href="#catalogo">Prodotti</a>
+    <a href="#footer">Contatti</a>
   </nav>
 </header>
 
-<main>
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="hero-content">
+    <h1>TechStore</h1>
+    <p>Il tuo showrooom digitale di tecnologia</p>
+    <a href="#catalogo" class="btn hero-btn">Scopri i prodotti</a>
+  </div>
+</section>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <h1>Innovazione.<br>Design.<br>Futuro.</h1>
-    <p>Scopri il nostro showroom digitale.</p>
-    <a href="#catalogo" class="btn">Esplora</a>
-  </section>
+<!-- CATALOGO -->
+<section id="catalogo" class="catalogo">
+  <h2>Prodotti in evidenza</h2>
 
-  <!-- CATALOGO -->
-  <section id="catalogo" class="catalogo">
-    <h2>I Nostri Prodotti</h2>
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Cerca tra i prodotti..." />
+  </div>
 
-    <div class="products-grid">
-      <div class="product-card">
-        <h3>Smartphone X</h3>
-        <p>Prestazioni straordinarie in un design minimale.</p>
-      </div>
-
-      <div class="product-card">
-        <h3>Laptop Pro</h3>
-        <p>Potenza e leggerezza per ogni esigenza.</p>
-      </div>
-
-      <div class="product-card">
-        <h3>Cuffie Wireless</h3>
-        <p>Audio immersivo e cancellazione del rumore.</p>
-      </div>
-    </div>
-  </section>
-
-</main>
+  <div id="productsContainer" class="products-grid"></div>
+</section>
 
 <!-- FOOTER -->
-<footer id="contatti">
-  <div class="footer-content">
-
-    <div class="footer-section">
-      <h4>Termini e Condizioni</h4>
-      <p>
-        Tutti i prodotti presenti nello showroom sono dimostrativi.
-        I prezzi e le disponibilità possono variare senza preavviso.
-      </p>
-    </div>
-
-    <div class="footer-section">
-      <h4>Contattaci</h4>
-      <p>Email: info@techstore-demo.it</p>
-      <p>Telefono: +39 345 123 4567</p>
-    </div>
-
+<footer id="footer">
+  <div class="footer-section">
+    <h3>Termini e Condizioni</h3>
+    <p>I prodotti visualizzati sono dimostrativi. Prezzi e disponibilità possono variare.</p>
   </div>
 
-  <div class="footer-bottom">
-    © 2026 TechStore - Mini WebApp Front-End
+  <div class="footer-section">
+    <h3>Contattaci</h3>
+    <p>Email: support@techstore-demo.it</p>
+    <p>Telefono: +39 345 123 4567</p>
   </div>
+
+  <div class="footer-bottom">© 2026 TechStore</div>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
