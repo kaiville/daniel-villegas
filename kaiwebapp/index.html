@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TechStore - Showroom Tecnologico</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>URBANÉ - Fashion Store</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header class="navbar">
-  <div class="logo">TechStore</div>
+  <div class="logo">URBANÉ</div>
   <nav class="nav-links">
     <a href="#hero">Home</a>
-    <a href="#catalogo">Prodotti</a>
+    <a href="#catalogo">Catalogo</a>
     <a href="#footer">Contatti</a>
   </nav>
 </header>
@@ -20,18 +20,33 @@
 <!-- HERO -->
 <section id="hero" class="hero">
   <div class="hero-content">
-    <h1>TechStore</h1>
-    <p>Il tuo showrooom digitale di tecnologia</p>
-    <a href="#catalogo" class="btn hero-btn">Scopri i prodotti</a>
+    <h1>ESSENTIALS<br>COLLECTION</h1>
+    <p>Minimal. Moderno. Senza tempo.</p>
+    <a href="#catalogo" class="btn hero-btn">Scopri la collezione</a>
   </div>
 </section>
 
 <!-- CATALOGO -->
 <section id="catalogo" class="catalogo">
-  <h2>Prodotti in evidenza</h2>
+  <h2>Collezione 2026</h2>
 
   <div class="controls">
-    <input type="text" id="searchInput" placeholder="Cerca tra i prodotti..." />
+    <input type="text" id="searchInput" placeholder="Cerca capo..." />
+
+    <select id="categoryFilter">
+      <option value="all">Tutte le categorie</option>
+      <option value="felpe">Felpe</option>
+      <option value="magliette">Magliette</option>
+      <option value="jeans">Jeans</option>
+      <option value="pantaloni">Pantaloni</option>
+    </select>
+
+    <select id="sortSelect">
+      <option value="default">Ordina per</option>
+      <option value="price-asc">Prezzo crescente</option>
+      <option value="price-desc">Prezzo decrescente</option>
+      <option value="name-asc">Nome A-Z</option>
+    </select>
   </div>
 
   <div id="productsContainer" class="products-grid"></div>
@@ -41,16 +56,16 @@
 <footer id="footer">
   <div class="footer-section">
     <h3>Termini e Condizioni</h3>
-    <p>I prodotti visualizzati sono dimostrativi. Prezzi e disponibilità possono variare.</p>
+    <p>I prodotti mostrati sono a scopo dimostrativo. I prezzi possono variare.</p>
   </div>
 
   <div class="footer-section">
     <h3>Contattaci</h3>
-    <p>Email: support@techstore-demo.it</p>
-    <p>Telefono: +39 345 123 4567</p>
+    <p>Email: support@urbane-store.it</p>
+    <p>Telefono: +39 348 765 4321</p>
   </div>
 
-  <div class="footer-bottom">© 2026 TechStore</div>
+  <div class="footer-bottom">© 2026 URBANÉ</div>
 </footer>
 
 <script src="script.js"></script>
