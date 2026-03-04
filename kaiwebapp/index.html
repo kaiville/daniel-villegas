@@ -3,118 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TechStore - Showroom Digitale</title>
+  <title>TechStore - Digital Showroom</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
-  <nav class="navbar">
-    <h1 class="logo">TechStore</h1>
-
-    <button class="hamburger" aria-label="Apri menu" aria-expanded="false">
-      ☰
-    </button>
-
+<header class="navbar">
+  <div class="logo">TechStore</div>
+  <nav>
     <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
       <li><a href="#catalogo">Catalogo</a></li>
-      <li><a href="#preferiti">Preferiti</a></li>
       <li><a href="#contatti">Contatti</a></li>
     </ul>
-
-    <button id="themeToggle" aria-label="Cambia tema">
-    </button>
   </nav>
 </header>
 
 <main>
 
-  <!-- HOME -->
-  <section id="home" class="section">
-    <h2>Benvenuto nello Showroom TechStore</h2>
-    <p>Scopri i migliori prodotti tech selezionati per te.</p>
-    <a href="#catalogo" class="btn">Vai al Catalogo</a>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>Innovazione.<br>Design.<br>Futuro.</h1>
+    <p>Scopri il nostro showroom digitale.</p>
+    <a href="#catalogo" class="btn">Esplora</a>
   </section>
 
   <!-- CATALOGO -->
-  <section id="catalogo" class="section">
-    <h2>Catalogo Prodotti</h2>
+  <section id="catalogo" class="catalogo">
+    <h2>I Nostri Prodotti</h2>
 
-    <div class="controls">
-      <input 
-        type="text" 
-        id="searchInput" 
-        placeholder="Cerca prodotto..." 
-        aria-label="Cerca prodotto"
-      />
+    <div class="products-grid">
+      <div class="product-card">
+        <h3>Smartphone X</h3>
+        <p>Prestazioni straordinarie in un design minimale.</p>
+      </div>
 
-      <select id="categoryFilter" aria-label="Filtra per categoria">
-        <option value="all">Tutte le categorie</option>
-        <option value="audio">Audio</option>
-        <option value="smartphone">Smartphone</option>
-        <option value="laptop">Laptop</option>
-      </select>
+      <div class="product-card">
+        <h3>Laptop Pro</h3>
+        <p>Potenza e leggerezza per ogni esigenza.</p>
+      </div>
 
-      <select id="sortSelect" aria-label="Ordina prodotti">
-        <option value="default">Ordina per</option>
-        <option value="price-asc">Prezzo crescente</option>
-        <option value="price-desc">Prezzo decrescente</option>
-        <option value="name-asc">Nome A-Z</option>
-      </select>
-
-      <button id="resetFilters">Reset</button>
+      <div class="product-card">
+        <h3>Cuffie Wireless</h3>
+        <p>Audio immersivo e cancellazione del rumore.</p>
+      </div>
     </div>
-
-    <div id="productsContainer" class="products-grid"></div>
-
-    <button id="loadMoreBtn" class="btn">Carica altri</button>
-  </section>
-
-  <!-- PREFERITI -->
-  <section id="preferiti" class="section">
-    <h2>I tuoi Preferiti</h2>
-    <div id="favoritesContainer" class="products-grid"></div>
-  </section>
-
-  <!-- CONTATTI -->
-  <section id="contatti" class="section">
-    <h2>Contattaci</h2>
-
-    <form id="contactForm" novalidate>
-      <label for="name">Nome</label>
-      <input type="text" id="name" required />
-      <small class="error"></small>
-
-      <label for="email">Email</label>
-      <input type="email" id="email" required />
-      <small class="error"></small>
-
-      <label for="message">Messaggio</label>
-      <textarea id="message" required></textarea>
-      <small class="error"></small>
-
-      <button type="submit" class="btn">Invia</button>
-    </form>
   </section>
 
 </main>
 
-<footer>
-  <p>© 2026 TechStore - Mini WebApp Front-End</p>
+<!-- FOOTER -->
+<footer id="contatti">
+  <div class="footer-content">
+
+    <div class="footer-section">
+      <h4>Termini e Condizioni</h4>
+      <p>
+        Tutti i prodotti presenti nello showroom sono dimostrativi.
+        I prezzi e le disponibilità possono variare senza preavviso.
+      </p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Contattaci</h4>
+      <p>Email: info@techstore-demo.it</p>
+      <p>Telefono: +39 345 123 4567</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 TechStore - Mini WebApp Front-End
+  </div>
 </footer>
 
-<!-- Modale -->
-<div id="modal" class="modal" aria-hidden="true">
-  <div class="modal-content">
-    <button id="closeModal" aria-label="Chiudi modale">X</button>
-    <div id="modalBody"></div>
-  </div>
-</div>
-
-<!-- Toast -->
-<div id="toast" class="toast"></div>
-
-<script src="script.js"></script>
 </body>
 </html>
