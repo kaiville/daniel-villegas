@@ -132,3 +132,103 @@ links.forEach(link => {
   });
 
 });
+const productsContainer = document.getElementById("productsContainer");
+
+const brands = [
+"Nike",
+"Adidas",
+"Supreme",
+"Stussy",
+"Off White",
+"Palm Angels",
+"Carhartt",
+"Stone Island",
+"Bape",
+"Fear of God"
+];
+
+const types = [
+"Tee",
+"Hoodie",
+"Street Tee",
+"Urban Hoodie",
+"Classic Tee",
+"Logo Hoodie",
+"Oversize Tee",
+"Street Hoodie"
+];
+
+const images = [
+"img/maglia1.jpg",
+"img/maglia2.jpg",
+"img/felpa1.jpg",
+"img/felpa2.jpg",
+"img/berretto1.jpg"
+];
+
+const categories = [
+"magliette",
+"felpe",
+"altri"
+];
+
+const products = [];
+
+
+/* GENERA 80 PRODOTTI */
+
+for(let i = 0; i < 80; i++){
+
+const brand = brands[Math.floor(Math.random()*brands.length)];
+
+const type = types[Math.floor(Math.random()*types.length)];
+
+const price = Math.floor(Math.random()*120) + 30;
+
+const category = categories[Math.floor(Math.random()*categories.length)];
+
+const img = images[Math.floor(Math.random()*images.length)];
+
+products.push({
+
+name: brand + " " + type,
+
+price: "€" + price,
+
+category: category,
+
+img: img
+
+});
+
+}
+
+
+
+/* CREA LE CARD */
+
+function renderProducts(){
+
+productsContainer.innerHTML = "";
+
+products.forEach(product => {
+
+const card = document.createElement("div");
+
+card.classList.add("product-card");
+
+card.dataset.category = product.category;
+
+card.innerHTML = `
+<img src="${product.img}" alt="${product.name}">
+<h3>${product.name}</h3>
+<p>${product.price}</p>
+`;
+
+productsContainer.appendChild(card);
+
+});
+
+}
+
+renderProducts();
