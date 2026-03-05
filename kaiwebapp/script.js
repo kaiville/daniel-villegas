@@ -15,32 +15,87 @@ behavior:"smooth"
 
 
 
-/* GENERAZIONE 80 PRODOTTI */
+/* BRANDS */
 
-const container = document.getElementById("productsContainer");
+const brands = [
+"Adidas","Armani","Balenciaga","Bape","Bottega Veneta","Burberry",
+"Calvin Klein","Canada Goose","Chrome Hearts","Converse","Dsquared2","Denim Tears",
+"Diesel","Dior","Fear of God","Ferragamo","Gallery Dept","Givenchy",
+"Gucci","Hermes","Hugo Boss","Jordan","Lanvin","Louis Vuitton","Levi's",
+"Maison Margiela","McQ Alexander McQueen","Moncler","Moschino",
+"New Balance","Nike","Off-White","Palm Angels","Prada",
+"Ralph Lauren","Rick Owens","Rimowa","Stone Island",
+"Supreme","Tommy Hilfiger","Versace","Yeezy"
+];
+
+
+/* TIPI PRODOTTI */
+
+const productTypes = [
+"Tee",
+"Oversized Tee",
+"Street Hoodie",
+"Classic Hoodie",
+"Logo Tee",
+"Zip Hoodie",
+"Street Jacket",
+"Crewneck",
+"Beanie",
+"Cap"
+];
+
+
+/* CATEGORIE */
+
+const categories = [
+"magliette",
+"felpe",
+"altri"
+];
+
+
+/* CONTAINER */
+
+const productsContainer = document.getElementById("productsContainer");
 
 const products = [];
 
-for(let i = 1; i <= 80; i++){
+
+/* GENERA 80 PRODOTTI REALISTICI */
+
+for(let i = 0; i < 80; i++){
+
+const brand = brands[Math.floor(Math.random()*brands.length)];
+
+const type = productTypes[Math.floor(Math.random()*productTypes.length)];
+
+const price = Math.floor(Math.random()*250) + 40;
+
+const category = categories[Math.floor(Math.random()*categories.length)];
+
+const imageIndex = Math.floor(Math.random()*5) + 1;
 
 products.push({
-name: "Street Tee " + i,
-price: "€" + (30 + i),
-category: i % 3 === 0 ? "felpe" : (i % 2 === 0 ? "magliette" : "altri"),
-img: "img/maglia1.jpg"
+
+name: brand + " " + type,
+brand: brand,
+price: "€" + price,
+category: category,
+img: "img/products/product" + imageIndex + ".jpg"
+
 });
 
 }
 
 
 
-/* CREAZIONE CARD */
+/* RENDER PRODOTTI */
 
 function renderProducts(){
 
-if(!container) return;
+if(!productsContainer) return;
 
-container.innerHTML = "";
+productsContainer.innerHTML = "";
 
 products.forEach(product => {
 
@@ -49,6 +104,7 @@ const card = document.createElement("div");
 card.classList.add("product-card");
 
 card.dataset.category = product.category;
+card.dataset.brand = product.brand;
 
 card.innerHTML = `
 <img src="${product.img}" alt="${product.name}">
@@ -56,7 +112,7 @@ card.innerHTML = `
 <p>${product.price}</p>
 `;
 
-container.appendChild(card);
+productsContainer.appendChild(card);
 
 });
 
