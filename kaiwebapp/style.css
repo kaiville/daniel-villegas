@@ -90,3 +90,12 @@ footer { background:#000; color:#eee; padding:3rem 2rem; text-align:center; }
 .footer-section { margin-bottom:1.5rem; }
 .footer-section p { color:#aaa; font-size:0.9rem; }
 .footer-bottom { margin-top:1rem; font-size:0.8rem; }
+
+.product-search{
+  padding:0.8rem 1rem;
+  border-radius:14px;
+  border:1px solid #e5e5e5;
+  width:100%;
+  max-width:400px;
+  margin-bottom:2rem;
+}
