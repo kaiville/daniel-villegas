@@ -1,57 +1,65 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>- Wearz </title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wearz - Home</title>
+
+  <!-- Font futuristico -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="navbar">
-  <div class="logo">Wearz</div>
+  <div class="logo" id="logo">Wearz</div>
   <nav class="nav-links">
     <a href="#hero">Home</a>
     <a href="#catalogo">Catalogo</a>
-    <a href="#footer">Contatti</a>
+    <a href="brands.html">Brands</a>
   </nav>
 </header>
 
-<!-- HERO -->
 <section id="hero" class="hero">
   <div class="hero-content">
-    <h1>Wearz<br></h1>
+    <h1>WEARZ</h1>
     <p>Fashion. Urban. Hype</p>
-<a href="brands.html" class="btn hero-btn">Esplora i brand migliori</a>  </div>
+    <a href="#catalogo" class="btn hero-btn">Scopri la Collezione 2026</a>
+  </div>
 </section>
 
-<!-- CATALOGO -->
 <section id="catalogo" class="catalogo">
   <h2>Collezione 2026</h2>
 
-  <div class="controls">
-    <input type="text" id="searchInput" placeholder="Cerca capo..." />
-
-    <select id="categoryFilter">
-      <option value="all">Tutte le categorie</option>
-      <option value="felpe">Felpe</option>
-      <option value="magliette">Magliette</option>
-      <option value="jeans">Jeans</option>
-      <option value="pantaloni">Pantaloni</option>
-    </select>
-
-    <select id="sortSelect">
-      <option value="default">Ordina per</option>
-      <option value="price-asc">Prezzo crescente</option>
-      <option value="price-desc">Prezzo decrescente</option>
-      <option value="name-asc">Nome A-Z</option>
-    </select>
+  <!-- Schede categorie -->
+  <div class="catalog-tabs">
+    <button class="tab-btn active" data-category="all">Tutti</button>
+    <button class="tab-btn" data-category="magliette">Magliette</button>
+    <button class="tab-btn" data-category="felpe">Felpe</button>
+    <button class="tab-btn" data-category="altri">Altri articoli</button>
   </div>
 
-  <div id="productsContainer" class="products-grid"></div>
+  <div id="productsContainer" class="products-grid">
+    <!-- Esempio prodotti -->
+    <div class="product-card" data-category="magliette">
+      <h3>Maglietta Urban</h3>
+      <p>€35</p>
+    </div>
+    <div class="product-card" data-category="felpe">
+      <h3>Felpa Street</h3>
+      <p>€60</p>
+    </div>
+    <div class="product-card" data-category="altri">
+      <h3>Berretto Trendy</h3>
+      <p>€25</p>
+    </div>
+    <div class="product-card" data-category="magliette">
+      <h3>Maglietta Tech</h3>
+      <p>€40</p>
+    </div>
+  </div>
 </section>
 
-<!-- FOOTER -->
 <footer id="footer">
   <div class="footer-section">
     <h3>Termini e Condizioni</h3>
@@ -60,13 +68,39 @@
 
   <div class="footer-section">
     <h3>Contattaci</h3>
-    <p>Email: support@wearz-store.it</p>
+    <p>Email: support@wearz.it</p>
     <p>Telefono: +39 350 144 6723</p>
   </div>
 
-  <div class="footer-bottom">© 2026 WEARZ</div>
+  <div class="footer-bottom">© 2026 Wearz</div>
 </footer>
 
-<script src="script.js"></script>
+<script src="brands.js"></script>
+<script>
+  // Click sul logo torna alla home
+  const logo = document.getElementById("logo");
+  logo.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Filtra prodotti per schede
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  tabButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      tabButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const category = btn.dataset.category;
+      const allProducts = document.querySelectorAll(".product-card");
+      allProducts.forEach(p => {
+        if(category === "all" || p.dataset.category === category) {
+          p.style.display = "block";
+        } else {
+          p.style.display = "none";
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>
