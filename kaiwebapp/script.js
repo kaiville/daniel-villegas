@@ -1,4 +1,6 @@
-/* LOGO TORNA IN ALTO */
+document.addEventListener("DOMContentLoaded", function(){
+
+/* LOGO TORNA SU */
 
 const logo = document.getElementById("logo");
 
@@ -13,72 +15,39 @@ behavior:"smooth"
 
 
 
-/* GENERAZIONE PRODOTTI */
+/* GENERAZIONE 80 PRODOTTI */
 
-const productsContainer = document.getElementById("productsContainer");
-
-const brands = [
-"Nike","Adidas","Supreme","Stussy","Off White",
-"Palm Angels","Carhartt","Stone Island","Bape","Fear of God"
-];
-
-const types = [
-"Tee","Hoodie","Street Tee","Urban Hoodie",
-"Classic Tee","Logo Hoodie","Oversize Tee","Street Hoodie"
-];
-
-const images = [
-"img/maglia1.jpg",
-"img/maglia2.jpg",
-"img/felpa1.jpg",
-"img/felpa2.jpg",
-"img/berretto1.jpg"
-];
-
-const categories = [
-"magliette",
-"felpe",
-"altri"
-];
+const container = document.getElementById("productsContainer");
 
 const products = [];
 
-if(productsContainer){
-
-for(let i = 0; i < 80; i++){
-
-const brand = brands[Math.floor(Math.random()*brands.length)];
-const type = types[Math.floor(Math.random()*types.length)];
-const price = Math.floor(Math.random()*120) + 30;
-const category = categories[Math.floor(Math.random()*categories.length)];
-const img = images[Math.floor(Math.random()*images.length)];
+for(let i = 1; i <= 80; i++){
 
 products.push({
-name: brand + " " + type,
-price: "€" + price,
-category: category,
-img: img
+name: "Street Tee " + i,
+price: "€" + (30 + i),
+category: i % 3 === 0 ? "felpe" : (i % 2 === 0 ? "magliette" : "altri"),
+img: "img/maglia1.jpg"
 });
 
 }
 
-}
 
 
-
-/* RENDER PRODOTTI */
+/* CREAZIONE CARD */
 
 function renderProducts(){
 
-if(!productsContainer) return;
+if(!container) return;
 
-productsContainer.innerHTML = "";
+container.innerHTML = "";
 
 products.forEach(product => {
 
 const card = document.createElement("div");
 
 card.classList.add("product-card");
+
 card.dataset.category = product.category;
 
 card.innerHTML = `
@@ -87,9 +56,11 @@ card.innerHTML = `
 <p>${product.price}</p>
 `;
 
-productsContainer.appendChild(card);
+container.appendChild(card);
 
 });
+
+attachProductEvents();
 
 }
 
@@ -171,9 +142,9 @@ const closeModal = document.getElementById("closeModal");
 
 function attachProductEvents(){
 
-const productCards = document.querySelectorAll(".product-card");
+const cards = document.querySelectorAll(".product-card");
 
-productCards.forEach(card => {
+cards.forEach(card => {
 
 card.addEventListener("click", () => {
 
@@ -193,14 +164,14 @@ modal.style.display = "flex";
 
 }
 
-attachProductEvents();
-
 
 
 if(closeModal){
 
 closeModal.addEventListener("click", () => {
+
 modal.style.display = "none";
+
 });
 
 }
@@ -259,7 +230,7 @@ behavior:"smooth"
 
 /* TRANSIZIONE PAGINA */
 
-const links = document.querySelectorAll('a[href]');
+const links = document.querySelectorAll("a[href]");
 
 links.forEach(link => {
 
@@ -280,6 +251,8 @@ window.location.href = url;
 }, 400);
 
 }
+
+});
 
 });
 
