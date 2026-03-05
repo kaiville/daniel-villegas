@@ -48,11 +48,12 @@ const productTypes = [
 /* CATEGORIE */
 
 const categories = [
-"magliette",
-"felpe",
-"altri"
+"Magliette",
+"Felpe con Cappuccio",
+"Jeans",
+"Pantaloni",
+"Altri"
 ];
-
 
 /* CONTAINER */
 
