@@ -81,7 +81,7 @@ h1, h2, .logo {
 .product-card p { color:var(--secondary); font-size:0.9rem; }
 
 /* BRANDS */
-.brands-section { padding:4rem 2rem; text-align:center; }
+.brands-section { padding:9rem 3rem; text-align:center; }
 .brands-section input { padding:0.8rem 1rem; border-radius:14px; border:1px solid #e5e5e5; width:100%; max-width:400px; margin-bottom:2rem; }
 
 .alphabet { display:flex; flex-wrap:wrap; justify-content:center; gap:0.5rem; margin-bottom:2rem; }
@@ -89,7 +89,7 @@ h1, h2, .logo {
 .alphabet button:hover, .alphabet button.active { background:#000; color:#fff; }
 
 .brand-list { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; }
-.brand-item { padding:0.8rem 1.2rem; border-radius:12px; border:1px solid #ccc; background:#fff; min-width:120px; text-align:center; font-weight:500; transition:0.2s; }
+.brand-item { padding:0.8rem 1.6rem; border-radius:13px; border:2px solid #ababab; background:#ffffff; min-width:120px; text-align:center; font-weight:500; transition:0.35s; }
 .brand-item:hover { background:#000; color:#fff; }
 
 /* FOOTER */
