@@ -12,11 +12,10 @@
 /* RESET */
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Zen Dots", sans-serif;
   background: var(--bg);
   color: var(--text);
 }
-
 h1, h2, .logo {
   font-family: "Bebas Neue", sans-serif;
   letter-spacing:2px;
