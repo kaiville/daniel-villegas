@@ -3,9 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const brands = [
     "Adidas","Armani","Balenciaga","Bape","Burberry",
     "Calvin Klein","Champion","Converse","Dsquared2",
-    "Gucci","Hugo Boss","Levi's","Nike","Off-White",
-    "Prada","Supreme","Tommy Hilfiger","Versace","Yeezy"
-  ];
+    "Gucci","Hugo Boss","Levi's", "Moncler", "Moschino", "New Balance", "Nike",
+    "Off-White","Palm Angels" "Prada","Ralph Lauren", "Rick Owens", "Stone Island", 
+    "Supreme", "Tommy Hilfiger","Versace","Yeezy"
+  ]; 
 
   const brandList = document.getElementById("brandList");
   const brandSearch = document.getElementById("brandSearch");
