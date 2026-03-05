@@ -28,7 +28,7 @@ body {
 .nav-links a:hover { opacity:0.6; }
 
 /* HERO */
-.hero { height:80vh; background: linear-gradient(to bottom,#000,#333); color:white;
+.hero { height:80vh; background: linear-gradient(to bottom,#fc1818,#4baaf0); color:white;
   display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem; }
 .hero h1 { font-size:clamp(4rem,8vw,6rem); letter-spacing:5px; font-family:"Orbitron",sans-serif; text-transform:uppercase; }
 .hero p { 
