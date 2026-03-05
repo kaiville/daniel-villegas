@@ -1,7 +1,7 @@
 // Lista brand
 const brands = [
   "Adidas","Armani","Balenciaga","Bape","Bottega Veneta", "Burberry",
-  "Calvin Klein","Canada Goose","Chrome Hearts", "Converse","Dsquared2", "Denim Tears", "Diesel", "Dior", "Fear of God", "Ferragamo", "Gallery Dept", "Givenchhy", 
+  "Calvin Klein","Canada Goose","Chrome Hearts", "Converse","Dsquared2", "Denim Tears", "Diesel", "Dior", "Fear of God", "Ferragamo", "Gallery Dept", "Givenchy", 
   "Gucci","Hermes", "Hugo Boss","Jordan", "Lanvin", "Louis Vuitton", "Levi's","Maison Margiela", "McQ Alexander McQueen", "Moncler","Moschino",
   "New Balance","Nike","Off-White","Palm Angels","Prada",
   "Ralph Lauren","Rick Owens","Rimowa", "Stone Island",
