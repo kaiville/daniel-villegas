@@ -105,3 +105,30 @@ document.addEventListener("keydown", (e) => {
   }
 
 });
+/* TRANSIZIONE TRA PAGINE */
+
+const links = document.querySelectorAll('a[href]');
+
+links.forEach(link => {
+
+  link.addEventListener("click", function(e){
+
+    const url = this.getAttribute("href");
+
+    if(url.includes(".html")){
+
+      e.preventDefault();
+
+      document.body.classList.add("fade-out");
+
+      setTimeout(() => {
+
+        window.location.href = url;
+
+      }, 400);
+
+    }
+
+  });
+
+});
