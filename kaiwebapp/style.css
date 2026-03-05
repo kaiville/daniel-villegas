@@ -8,7 +8,9 @@
   --radius: 14px;
   --transition: 0.3s ease;
 }
-
+html{
+  scroll-behavior: smooth;
+}
 /* RESET */
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
