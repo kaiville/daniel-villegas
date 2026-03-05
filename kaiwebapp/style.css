@@ -26,6 +26,7 @@ body {
 .navbar {
   position: sticky;
   top: 0;
+  z-index: 100;
   background: var(--surface);
   display: flex;
   justify-content: space-between;
@@ -63,13 +64,15 @@ body {
   text-align: center;
   padding: 2rem;
 }
+
 .hero-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1.5rem; 
+  gap: 1.5rem;
 }
+
 .hero h1 {
   font-size: clamp(3rem, 6vw, 5rem);
   letter-spacing: 3px;
@@ -89,14 +92,11 @@ body {
   border-radius: var(--radius);
   text-decoration: none;
   font-weight: 600;
-  
-  .hero-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1.5rem; /* spazio verticale tra H1, P e pulsante */
+  transition: var(--transition);
 }
+
+.hero-btn:hover {
+  background: #f0f0f0;
 }
 
 /* CATALOGO */
@@ -186,6 +186,8 @@ footer {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+/* BRANDS SECTION */
 .brands-section {
   padding: 4rem 2rem;
   text-align: center;
