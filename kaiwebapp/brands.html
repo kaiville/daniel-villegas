@@ -1,119 +1,58 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Brands - Wearz</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=Bebas+Neue&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-<header class="navbar">
-
-<div class="logo" id="logo">Wearz</div>
-
-<nav class="nav-links">
-<a href="index.html">Home</a>
-<a href="#brandsSection">Brands</a>
-</nav>
-
-</header>
-
-
-<main>
-
-<section id="brandsSection" class="brands-section">
-
-<h1>Brand Più Famosi</h1>
-
-<input
-type="text"
-id="brandSearch"
-placeholder="Cerca brand..."
->
-
-<div id="alphabet" class="alphabet"></div>
-
-<div id="brandList" class="brand-list"></div>
-
-</section>
-
-</main>
-
-
-<footer id="footer">
-
-<div class="footer-section">
-
-<h3>Termini e Condizioni</h3>
-
-<p>I brand mostrati sono a scopo dimostrativo. I prezzi possono variare.</p>
-
-</div>
-
-
-<div class="footer-section">
-
-<h3>Contattaci</h3>
-
-<p>Email: support@wearz.it</p>
-
-<p>Telefono: +39 350 144 6723</p>
-
-</div>
-
-<div class="footer-bottom">
-
-© 2026 Wearz
-
-</div>
-
-</footer>
-
-
-
-<script src="brands.js"></script>
-
+<!-- Applica dark mode PRIMA del render per evitare flash -->
 <script>
-
-/* TRANSIZIONE PAGINA */
-
-const links = document.querySelectorAll('a[href]');
-
-links.forEach(link => {
-
-link.addEventListener("click", function(e){
-
-const url = this.getAttribute("href");
-
-if(url.includes(".html")){
-
-e.preventDefault();
-
-document.body.classList.add("fade-out");
-
-setTimeout(() => {
-
-window.location.href = url;
-
-}, 400);
-
-}
-
-});
-
-});
-
+  if(localStorage.getItem("theme") === "dark"){
+    document.documentElement.classList.add("dark-pre");
+  }
 </script>
-
+<style>
+  html.dark-pre body { background: #0e0e0e; }
+</style>
+</head>
+<body>
+ 
+<header class="navbar">
+  <div class="logo" id="logo">Wearz</div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="#brandsSection">Brands</a>
+  </nav>
+  <!-- DARK MODE TOGGLE -->
+  <button class="dark-toggle" id="darkToggle" aria-label="Modalità scura">
+    <span class="toggle-thumb"></span>
+  </button>
+</header>
+ 
+<main>
+  <section id="brandsSection" class="brands-section">
+    <h1>Brand Più Famosi</h1>
+    <input type="text" id="brandSearch" placeholder="Cerca brand...">
+    <div id="alphabet" class="alphabet"></div>
+    <div id="brandList" class="brand-list"></div>
+  </section>
+</main>
+ 
+<footer id="footer">
+  <div class="footer-section">
+    <h3>Termini e Condizioni</h3>
+    <p>I brand mostrati sono a scopo dimostrativo. I prezzi possono variare.</p>
+  </div>
+  <div class="footer-section">
+    <h3>Contattaci</h3>
+    <p>Email: support@wearz.it</p>
+    <p>Telefono: +39 350 144 6723</p>
+  </div>
+  <div class="footer-bottom">© 2026 Wearz</div>
+</footer>
+ 
+<script src="brands.js"></script>
+<script src="script.js"></script>
 </body>
-
 </html>
