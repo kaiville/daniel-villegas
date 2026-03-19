@@ -1,191 +1,92 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Wearz - Home</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=Bebas+Neue&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-
+<!-- Applica dark mode PRIMA del render per evitare flash -->
+<script>
+  if(localStorage.getItem("theme") === "dark"){
+    document.documentElement.classList.add("dark-pre");
+  }
+</script>
+<style>
+  html.dark-pre body { background: #0e0e0e; }
+</style>
 </head>
-
-
 <body>
-
-
+ 
 <header class="navbar">
-
-<div class="logo" id="logo">Wearz</div>
-
-<nav class="nav-links">
-<a href="#hero">Home</a>
-<a href="#catalogo">Catalogo</a>
-<a href="brands.html">Brands</a>
-</nav>
-
+  <div class="logo" id="logo">Wearz</div>
+  <nav class="nav-links">
+    <a href="#hero">Home</a>
+    <a href="#catalogo">Catalogo</a>
+    <a href="brands.html">Brands</a>
+  </nav>
+  <!-- DARK MODE TOGGLE -->
+  <button class="dark-toggle" id="darkToggle" aria-label="Modalità scura">
+    <span class="toggle-thumb"></span>
+  </button>
 </header>
-
-
-
+ 
 <main>
-
-
-
-<section id="hero" class="hero">
-
-<div class="hero-content">
-
-<h1>WEARZ</h1>
-
-<p>Fashion. Urban. Hype</p>
-
-<a href="#catalogo" class="btn hero-btn">
-Scopri la Collezione 2026
-</a>
-
-</div>
-
-</section>
-
-
-
-
-<section id="catalogo" class="catalogo">
-
-<h2>Collezione 2026</h2>
-
-
-<input
-type="text"
-id="productSearch"
-placeholder="Cerca prodotto..."
-class="product-search"
->
-
-
-
-<div class="catalog-tabs">
-
-<button class="tab-btn active" data-category="all">
-Tutti
-</button>
-
-<button class="tab-btn" data-category="magliette">
-Magliette
-</button>
-
-<button class="tab-btn" data-category="felpe">
-Felpe
-</button>
-
-<button class="tab-btn" data-category="jeans">
-Jeans
-</button>
-
-<button class="tab-btn" data-category="pantaloni">
-Pantaloni
-</button>
-
-<button class="tab-btn" data-category="altri">
-Altri articoli
-</button>
-
-</div>
-
-
-
-<div id="productsContainer" class="products-grid"></div>
-
-
-</section>
-
-
-
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <h1>WEARZ</h1>
+      <p>Fashion. Urban. Hype</p>
+      <a href="#catalogo" class="btn hero-btn">Scopri la Collezione 2026</a>
+    </div>
+  </section>
+ 
+  <section id="catalogo" class="catalogo">
+    <h2>Collezione 2026</h2>
+    <input
+      type="text"
+      id="productSearch"
+      placeholder="Cerca prodotto..."
+      class="product-search"
+    >
+    <div class="catalog-tabs">
+      <button class="tab-btn active" data-category="all">Tutti</button>
+      <button class="tab-btn" data-category="magliette">Magliette</button>
+      <button class="tab-btn" data-category="felpe">Felpe</button>
+      <button class="tab-btn" data-category="jeans">Jeans</button>
+      <button class="tab-btn" data-category="pantaloni">Pantaloni</button>
+      <button class="tab-btn" data-category="altri">Altri articoli</button>
+    </div>
+    <div id="productsContainer" class="products-grid"></div>
+  </section>
 </main>
-
-
-
-
+ 
 <footer id="footer">
-
-<div class="footer-section">
-
-<h3>Termini e Condizioni</h3>
-
-<p>
-I prodotti mostrati sono a scopo dimostrativo.
-I prezzi possono variare.
-</p>
-
-</div>
-
-
-<div class="footer-section">
-
-<h3>Contattaci</h3>
-
-<p>Email: support@wearz.it</p>
-
-<p>Telefono: +39 350 144 6723</p>
-
-</div>
-
-
-<div class="footer-bottom">
-
-© 2026 Wearz
-
-</div>
-
+  <div class="footer-section">
+    <h3>Termini e Condizioni</h3>
+    <p>I prodotti mostrati sono a scopo dimostrativo. I prezzi possono variare.</p>
+  </div>
+  <div class="footer-section">
+    <h3>Contattaci</h3>
+    <p>Email: support@wearz.it</p>
+    <p>Telefono: +39 350 144 6723</p>
+  </div>
+  <div class="footer-bottom">© 2026 Wearz</div>
 </footer>
-
-
-
-
+ 
 <!-- MODALE PRODOTTO -->
-
 <div id="productModal" class="modal">
-
-<div class="modal-content">
-
-<span id="closeModal" class="close-modal">
-
-&times;
-
-</span>
-
-<img id="modalImg" src="" alt="">
-
-<h2 id="modalTitle"></h2>
-
-<p id="modalPrice"></p>
-
+  <div class="modal-content">
+    <span id="closeModal" class="close-modal">&times;</span>
+    <img id="modalImg" src="" alt="">
+    <h2 id="modalTitle"></h2>
+    <p id="modalPrice"></p>
+  </div>
 </div>
-
-</div>
-
-
-
-
+ 
 <!-- FRECCIA TORNA SU -->
-
-<button id="backToTop" aria-label="Torna in alto">
-
-↑
-
-</button>
-
-
-
-
+<button id="backToTop" aria-label="Torna in alto">↑</button>
+ 
 <script src="script.js"></script>
-
-
 </body>
-
 </html>
+ 
