@@ -12,14 +12,26 @@
   --transition: 0.3s ease;
 }
  
+/* DARK MODE VARIABILI */
+body.dark {
+  --bg: #0e0e0e;
+  --surface: #1a1a1a;
+  --text: #f0f0f0;
+  --secondary: #999;
+  --primary: #ffffff;
+  --border: #2e2e2e;
+}
+ 
 html { scroll-behavior: smooth; }
  
 * { margin: 0; padding: 0; box-sizing: border-box; }
  
+/* Transizione globale colori per dark mode */
 body {
   font-family: "Zen Dots", sans-serif;
   background: var(--bg);
   color: var(--text);
+  transition: background 0.4s ease, color 0.4s ease;
 }
  
 h1, h2, .logo {
@@ -104,6 +116,71 @@ body.fade-out {
  
 .nav-links a:hover::after { width: 100%; }
 .nav-links a:hover { opacity: 0.7; }
+ 
+/* ===========================
+   DARK MODE TOGGLE
+=========================== */
+.dark-toggle {
+  background: none;
+  border: 2px solid var(--border);
+  border-radius: 50px;
+  width: 56px;
+  height: 28px;
+  cursor: pointer;
+  position: relative;
+  margin-left: 2rem;
+  flex-shrink: 0;
+  transition: border-color 0.3s ease, background 0.3s ease;
+  overflow: hidden;
+}
+ 
+.dark-toggle::before {
+  content: "☀️";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+ 
+.dark-toggle::after {
+  content: "🌙";
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+  opacity: 0.4;
+}
+ 
+body.dark .dark-toggle {
+  background: #2a2a2a;
+  border-color: #444;
+}
+ 
+body.dark .dark-toggle::before { opacity: 0.4; }
+body.dark .dark-toggle::after  { opacity: 1; }
+ 
+/* Pallino scorrevole */
+.dark-toggle .toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #111;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease;
+  z-index: 1;
+}
+ 
+body.dark .dark-toggle .toggle-thumb {
+  transform: translateX(28px);
+  background: #f0f0f0;
+}
+ 
  
  
 /* ===========================
@@ -634,3 +711,106 @@ footer.visible {
   opacity: 1;
   transform: translateY(0);
 }
+ 
+ 
+/* ===========================
+   DARK MODE — OVERRIDES
+=========================== */
+ 
+/* Navbar */
+body.dark .navbar {
+  background: var(--surface);
+  border-bottom-color: var(--border);
+}
+ 
+/* Input ricerca */
+body.dark .product-search,
+body.dark .brands-section input {
+  background: #1e1e1e;
+  color: var(--text);
+  border-color: #3a3a3a;
+}
+ 
+body.dark .product-search:focus,
+body.dark .brands-section input:focus {
+  border-color: #888;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.06);
+}
+ 
+/* Tabs */
+body.dark .tab-btn {
+  background: #1a1a1a;
+  color: #ccc;
+  border-color: #3a3a3a;
+}
+ 
+body.dark .tab-btn:hover,
+body.dark .tab-btn.active {
+  background: #fff;
+  color: #000;
+}
+ 
+/* Product card */
+body.dark .product-card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+ 
+body.dark .product-card:hover {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+  border-color: #444;
+}
+ 
+body.dark .product-card p { color: var(--secondary); }
+ 
+/* Modale */
+body.dark .modal-content {
+  background: #1c1c1c;
+  color: var(--text);
+}
+ 
+body.dark .close-modal { color: #ccc; }
+body.dark .close-modal:hover { color: #ff6b6b; }
+ 
+/* Alphabet buttons */
+body.dark .alphabet button {
+  background: #1a1a1a;
+  color: #ccc;
+  border-color: #3a3a3a;
+}
+ 
+body.dark .alphabet button:hover,
+body.dark .alphabet button.active {
+  background: #fff;
+  color: #000;
+}
+ 
+/* Brand items */
+body.dark .brand-item {
+  background: #1a1a1a;
+  color: #ddd;
+  border-color: #3a3a3a;
+}
+ 
+body.dark .brand-item:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+ 
+/* Back to top */
+body.dark #backToTop {
+  background: #eee;
+  color: #000;
+}
+ 
+body.dark #backToTop:hover {
+  background: #fff;
+}
+ 
+/* Footer — rimane scuro, solo aggiustiamo i colori del testo */
+body.dark footer {
+  background: #050505;
+}
+ 
+ 
