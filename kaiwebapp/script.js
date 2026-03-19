@@ -1,6 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
  
   /* ===========================
+     DARK MODE
+  =========================== */
+  const toggleBtn = document.getElementById("darkToggle");
+ 
+  // Applica tema salvato subito
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+  }
+ 
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      const isDark = document.body.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  }
+ 
+  /* ===========================
      LOGO TORNA SU
   =========================== */
   const logo = document.getElementById("logo");
@@ -228,3 +246,4 @@ document.addEventListener("DOMContentLoaded", function () {
   });
  
 });
+ 
