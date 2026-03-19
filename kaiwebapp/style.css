@@ -813,4 +813,19 @@ body.dark footer {
   background: #050505;
 }
  
+/* Hero in dark mode */
+body.dark .hero {
+  background: linear-gradient(135deg, #6b0f0f 0%, #2a1a0e 40%, #0d1a2e 100%);
+  background-size: 200% 200%;
+  animation: gradientShiftDark 6s ease infinite;
+}
  
+@keyframes gradientShiftDark {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+ 
+body.dark .hero p { color: #aaa; }
+body.dark .hero-btn { background: #1a1a1a; color: #fff; }
+body.dark .hero-btn:hover { background: #2a2a2a; }
