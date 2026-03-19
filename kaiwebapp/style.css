@@ -1,3 +1,6 @@
+
+Copia
+
 /* ===========================
    VARIABILI & RESET
 =========================== */
@@ -28,14 +31,14 @@ html { scroll-behavior: smooth; }
  
 /* Transizione globale colori per dark mode */
 body {
-  font-family: "Zen Dots", sans-serif;
+  font-family: "DM Sans", sans-serif;
   background: var(--bg);
   color: var(--text);
   transition: background 0.4s ease, color 0.4s ease;
 }
  
 h1, h2, .logo {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "DM Sans", sans-serif;
   letter-spacing: 2px;
 }
  
@@ -306,7 +309,7 @@ body.dark .dark-toggle .toggle-thumb {
 }
  
 .catalogo h2 {
-  font-family: "Orbitron", sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 2.5rem;
   margin-bottom: 2rem;
   letter-spacing: 0.2px;
@@ -331,7 +334,7 @@ body.dark .dark-toggle .toggle-thumb {
   max-width: 400px;
   margin-bottom: 2rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-  font-family: "Zen Dots", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
  
 .product-search:focus {
@@ -356,7 +359,7 @@ body.dark .dark-toggle .toggle-thumb {
   border: 1px solid #ccc;
   background: #fff;
   cursor: pointer;
-  font-family: "Orbitron", sans-serif;
+  font-family: "DM Sans", sans-serif;
   transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
  
@@ -462,7 +465,7 @@ body.dark .dark-toggle .toggle-thumb {
   width: 100%;
   max-width: 400px;
   margin-bottom: 2rem;
-  font-family: "Zen Dots", sans-serif;
+  font-family: "DM Sans", sans-serif;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
  
@@ -488,7 +491,7 @@ body.dark .dark-toggle .toggle-thumb {
   border: 1px solid #ccc;
   background: #fff;
   cursor: pointer;
-  font-family: "Zen Dots", sans-serif;
+  font-family: "DM Sans", sans-serif;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
  
   /* Stagger reveal */
@@ -829,3 +832,4 @@ body.dark .hero {
 body.dark .hero p { color: #aaa; }
 body.dark .hero-btn { background: #1a1a1a; color: #fff; }
 body.dark .hero-btn:hover { background: #2a2a2a; }
+ 
