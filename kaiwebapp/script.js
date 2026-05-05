@@ -181,27 +181,89 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalTitle = document.getElementById("modalTitle");
   const modalPrice = document.getElementById("modalPrice");
   const modalWish  = document.getElementById("modalWish");
+  const modalExtra = document.getElementById("modalExtra");
   const closeModal = document.getElementById("closeModal");
+
+  /* Info extra per categoria */
+  const categoryDetails = {
+    magliette: {
+      taglie:    ["S","M","L","XL","2XL"],
+      materiale: "100% Cotone",
+      extra:     null
+    },
+    felpe: {
+      taglie:    ["S","M","L","XL","2XL"],
+      materiale: "80% Cotone, 20% Poliestere",
+      extra:     null
+    },
+    jeans: {
+      taglie:    ["28","30","32","34","36"],
+      materiale: "98% Denim, 2% Elastan",
+      extra:     "Fit: Regular"
+    },
+    pantaloni: {
+      taglie:    ["S","M","L","XL"],
+      materiale: "Misto Cotone",
+      extra:     "Fit: Relaxed"
+    },
+    altri: {
+      taglie:    ["Taglia unica"],
+      materiale: "Materiale misto",
+      extra:     null
+    }
+  };
 
   function openModal(product) {
     if (!modal) return;
-    modalImg.src            = product.img;
-    modalTitle.textContent  = product.name;
-    modalPrice.textContent  = product.price;
 
+    const details = categoryDetails[product.category] || categoryDetails.altri;
+
+    modalImg.src           = product.img;
+    modalTitle.textContent = product.name;
+    modalPrice.textContent = product.price;
+
+    /* Costruisce il contenuto extra */
+    let extraHTML = `
+      <div class="modal-details">
+        <div class="modal-taglie">
+          <span class="modal-label">Taglia</span>
+          <div class="taglie-list">
+            ${details.taglie.map(t => `<button class="taglia-btn">${t}</button>`).join("")}
+          </div>
+        </div>
+        <div class="modal-materiale">
+          <span class="modal-label">Materiale</span>
+          <span class="modal-value">${details.materiale}</span>
+        </div>
+        ${details.extra ? `<div class="modal-fit"><span class="modal-label">Fit</span><span class="modal-value">${details.extra}</span></div>` : ""}
+      </div>
+    `;
+
+    if (modalExtra) modalExtra.innerHTML = extraHTML;
+
+    /* Selezione taglia */
+    modalExtra.querySelectorAll(".taglia-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        modalExtra.querySelectorAll(".taglia-btn").forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
+      });
+    });
+
+    /* Wishlist */
     if (modalWish) {
       const wished = isWished(product.name);
       modalWish.classList.toggle("active", wished);
       modalWish.querySelector("svg").setAttribute("fill", wished ? "currentColor" : "none");
+      modalWish.querySelector("span").textContent = wished ? "Nei preferiti" : "Aggiungi ai preferiti";
 
       modalWish.onclick = () => {
         toggleWish(product);
-        const active = !isWished(product.name) ? false : true;
+        const active = isWished(product.name);
         modalWish.classList.toggle("active", active);
         modalWish.querySelector("svg").setAttribute("fill", active ? "currentColor" : "none");
+        modalWish.querySelector("span").textContent = active ? "Nei preferiti" : "Aggiungi ai preferiti";
         modalWish.classList.add("pop");
         setTimeout(() => modalWish.classList.remove("pop"), 300);
-        /* Aggiorna anche il cuore nella card */
         document.querySelectorAll(`.wish-btn[data-name="${product.name}"]`).forEach(btn => {
           btn.classList.toggle("active", active);
           btn.querySelector("svg").setAttribute("fill", active ? "currentColor" : "none");
