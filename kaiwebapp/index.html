@@ -71,16 +71,27 @@
   <!-- MODALE PRODOTTO -->
   <div id="productModal" class="modal">
     <div class="modal-content">
-      <span id="closeModal" class="close-modal">&times;</span>
+
+      <!-- Header modale: cuore in alto a destra -->
+      <div class="modal-header">
+        <span id="closeModal" class="close-modal">&times;</span>
+        <button id="modalWish" class="modal-wish-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+
       <img id="modalImg" src="" alt="">
       <h2 id="modalTitle"></h2>
-      <p id="modalPrice"></p>
-      <button id="modalWish" class="modal-wish-btn">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-        </svg>
-        <span>Aggiungi ai preferiti</span>
-      </button>
+      <p id="modalPrice" class="modal-price"></p>
+
+      <!-- Dettagli dinamici per categoria -->
+      <div id="modalExtra"></div>
+
+      <!-- Bottone acquista -->
+      <button class="buy-btn">Acquista</button>
+
     </div>
   </div>
 
