@@ -1,52 +1,79 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brands - Wearz</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<!-- Applica dark mode PRIMA del render per evitare flash -->
-<script>
-  if(localStorage.getItem("theme") === "dark"){
-    document.documentElement.classList.add("dark-pre");
-  }
-</script>
-<style>
-  html.dark-pre body { background: #0e0e0e; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brands - Wearz</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-pre");
+    }
+  </script>
+  <style>
+    html.dark-pre body { background: #0e0e0e; }
+  </style>
 </head>
 <body>
-
-<header class="navbar">
-  <div class="logo" id="logo">Wearz</div>
-  <nav class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="#brandsSection">Brands</a>
-  </nav>
-  <!-- DARK MODE TOGGLE -->
-  <button class="dark-toggle" id="darkToggle" aria-label="Modalità scura">
-    <span class="toggle-thumb"></span>
-  </button>
-</header>
-
-<main>
-  <section id="brandsSection" class="brands-section">
-    <h1>Brand Più Famosi</h1>
-    <input type="text" id="brandSearch" placeholder="Cerca brand...">
-    <div id="alphabet" class="alphabet"></div>
-    <div id="brandList" class="brand-list"></div>
-  </section>
-</main>
-
-<footer id="footer">
-  <div class="footer-section">
-    <h3>Termini e Condizioni</h3>
-    <p>I brand mostrati sono a scopo dimostrativo. I prezzi possono variare.</p>
-  </div>
-  <div class="footer-section">
-    <h3>Contattaci</h3>
-    <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a1d2d4d1d1ced3d5e1d6c4c0d3db8fc8d5">[email&#160;protected]</a></p>
-    <p>Telefono: +39 350 144 6723</p>
-  </div>
-  <div class="footer-bott
+ 
+  <header class="navbar">
+    <div class="logo" id="logo">Wearz</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#brandsSection">Brands</a>
+    </nav>
+    <button class="dark-toggle" id="darkToggle" aria-label="Modalità scura">
+      <span class="toggle-thumb"></span>
+    </button>
+  </header>
+ 
+  <main>
+    <section id="brandsSection" class="brands-section">
+ 
+      <h1>Brand Più Famosi</h1>
+ 
+      <!-- Barra di ricerca -->
+      <input type="text" id="brandSearch" placeholder="Cerca brand..." autocomplete="off">
+ 
+      <!-- Layout: alfabeto sx + brand dx -->
+      <div class="brands-layout">
+ 
+        <!-- Colonna alfabeto -->
+        <div class="alphabet-col">
+          <button class="alpha-btn active" data-letter="all">Tutti</button>
+          <!-- A-Z generato da brands.js -->
+          <div id="alphabet" class="alphabet-list"></div>
+        </div>
+ 
+        <!-- Colonna brand -->
+        <div class="brands-col">
+          <div id="brandCount" class="brand-count"></div>
+          <div id="brandList" class="brand-list"></div>
+        </div>
+ 
+      </div>
+ 
+    </section>
+  </main>
+ 
+  <footer id="footer">
+    <div class="footer-section">
+      <h3>Termini e Condizioni</h3>
+      <p>I brand mostrati sono a scopo dimostrativo. I prezzi possono variare.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Contattaci</h3>
+      <p>Email: support@wearz.it</p>
+      <p>Telefono: +39 350 144 6723</p>
+    </div>
+    <div class="footer-bottom">© 2026 Wearz</div>
+  </footer>
+ 
+  <button id="backToTop" aria-label="Torna in alto">↑</button>
+ 
+  <script src="brands.js"></script>
+  <script src="script.js"></script>
+ 
+</body>
+</html>
