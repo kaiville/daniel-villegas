@@ -947,3 +947,203 @@ body.dark .hero {
 body.dark .hero p { color: #aaa; }
 body.dark .hero-btn { background: #1a1a1a; color: #fff; }
 body.dark .hero-btn:hover { background: #2a2a2a; }
+
+
+
+/* ===========================
+   WISHLIST — NAVBAR BADGE
+=========================== */
+.nav-wish {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.wish-count {
+  background: #e00;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  transition: transform 0.2s ease;
+}
+
+.nav-wish:hover .wish-count { transform: scale(1.2); }
+
+/* ===========================
+   WISH BUTTON (cuore sulle card)
+=========================== */
+.wish-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  z-index: 2;
+}
+
+body.dark .wish-btn {
+  background: rgba(30,30,30,0.85);
+  color: #555;
+}
+
+.wish-btn:hover {
+  color: #e00;
+  transform: scale(1.15);
+}
+
+.wish-btn.active {
+  color: #e00;
+}
+
+.wish-btn.pop {
+  animation: heartPop 0.3s ease;
+}
+
+@keyframes heartPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+/* ===========================
+   MODAL WISH BUTTON
+=========================== */
+.modal-wish-btn {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0.7rem 1.2rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.modal-wish-btn:hover {
+  border-color: #e00;
+  color: #e00;
+}
+
+.modal-wish-btn.active {
+  background: #fff0f0;
+  border-color: #e00;
+  color: #e00;
+}
+
+body.dark .modal-wish-btn.active {
+  background: #2a1010;
+}
+
+.modal-wish-btn.active span::before {
+  content: "✓ ";
+}
+
+.modal-wish-btn.pop {
+  animation: heartPop 0.3s ease;
+}
+
+/* ===========================
+   WISHLIST PAGE
+=========================== */
+.wishlist-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+}
+
+.wishlist-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.wishlist-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  animation: heroTitle 0.6s ease both;
+}
+
+.wishlist-subtitle {
+  color: var(--secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.clear-btn {
+  background: none;
+  border: 1.5px solid #e00;
+  color: #e00;
+  padding: 0.5rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.clear-btn:hover {
+  background: #e00;
+  color: #fff;
+}
+
+/* Empty state */
+.wishlist-empty {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  text-align: center;
+  gap: 1rem;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  animation: floatBubble 3s ease-in-out infinite;
+}
+
+.wishlist-empty h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.wishlist-empty p {
+  color: var(--secondary);
+}
+
+/* Nav link attivo */
+.nav-active {
+  font-weight: 700;
+  opacity: 1 !important;
+}
+
+/* Fade out card rimossa */
+@keyframes fadeOut {
+  to { opacity: 0; transform: scale(0.9); }
+}
