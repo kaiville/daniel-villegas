@@ -486,11 +486,16 @@ body.dark .product-card .card-img-wrap {
    BRANDS SECTION
 =========================== */
 .brands-section {
-  padding: 9rem 3rem;
+  padding: 5rem 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: center;
 }
 
 .brands-section h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
@@ -501,102 +506,169 @@ body.dark .product-card .card-img-wrap {
   transform: translateY(0);
 }
 
-.brands-section input {
-  padding: 0.8rem 1rem;
+.brands-section > input {
+  display: block;
+  margin: 0 auto 2rem;
+  padding: 0.8rem 1.2rem;
   border-radius: 14px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
   width: 100%;
-  max-width: 400px;
-  margin-bottom: 2rem;
+  max-width: 480px;
   font-family: "DM Sans", sans-serif;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.brands-section input:focus {
+.brands-section > input:focus {
   outline: none;
-  border-color: #000;
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.08);
-  transform: scale(1.01);
+  border-color: #888;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.07);
 }
 
-/* Alfabeto */
-.alphabet {
+body.dark .brands-section > input {
+  background: #1e1e1e;
+  color: var(--text);
+  border-color: #3a3a3a;
+}
+
+/* Layout due colonne */
+.brands-layout {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
+  gap: 2.5rem;
+  align-items: flex-start;
+  text-align: left;
 }
 
-.alphabet button {
-  padding: 0.5rem 0.8rem;
+/* Colonna alfabeto — sticky a sinistra */
+.alphabet-col {
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 54px;
+  flex-shrink: 0;
+}
+
+.alpha-btn {
+  padding: 0.4rem 0.5rem;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  background: #fff;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
   cursor: pointer;
   font-family: "DM Sans", sans-serif;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-
-  /* Stagger reveal */
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
   opacity: 0;
   animation: fadeUp 0.4s ease forwards;
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.alphabet button:hover {
-  background: #000;
-  color: #fff;
-  transform: translateY(-2px) scale(1.1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+.alpha-btn:hover:not(.disabled) {
+  background: var(--text);
+  color: var(--surface);
+  transform: scale(1.08);
 }
 
-.alphabet button.active {
-  background: #000;
-  color: #fff;
-  transform: scale(1.12);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+.alpha-btn.active {
+  background: var(--text);
+  color: var(--surface);
+  border-color: var(--text);
+  transform: scale(1.1);
+}
+
+.alpha-btn.disabled {
+  opacity: 0.2 !important;
+  cursor: default;
+  animation: none;
+}
+
+/* Colonna brand */
+.brands-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.brand-count {
+  font-size: 0.8rem;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
 }
 
 /* Lista brand */
 .brand-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+  gap: 0.75rem;
+  justify-content: flex-start;
 }
 
 .brand-item {
-  padding: 0.8rem 1.6rem;
-  border-radius: 13px;
-  border: 2px solid #ababab;
-  background: #ffffff;
-  min-width: 120px;
-  text-align: center;
-  font-weight: 500;
+  padding: 0.6rem 1.3rem;
+  border-radius: 50px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.9rem;
   cursor: default;
-
   opacity: 0;
-  transform: scale(0.85);
-  animation: popIn 0.4s ease forwards;
-
-  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transform: scale(0.9);
+  animation: popIn 0.35s ease forwards;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease,
+              transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 @keyframes popIn {
-  from { opacity: 0; transform: scale(0.85); }
+  from { opacity: 0; transform: scale(0.88); }
   to   { opacity: 1; transform: scale(1); }
 }
 
 .brand-item:hover {
-  background: #000;
-  color: #fff;
-  border-color: #000;
-  transform: scale(1.08) translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  background: var(--text);
+  color: var(--surface);
+  border-color: var(--text);
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+body.dark .brand-item:hover {
+  box-shadow: 0 6px 18px rgba(255,255,255,0.05);
+}
+
+.no-results {
+  color: var(--secondary);
+  padding: 1rem 0;
+}
+
+/* Responsive mobile */
+@media (max-width: 600px) {
+  .brands-layout {
+    flex-direction: column;
+  }
+  .alphabet-col {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    min-width: unset;
+  }
+  .alpha-btn {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.78rem;
+  }
 }
 
 
