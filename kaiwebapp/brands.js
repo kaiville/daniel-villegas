@@ -11,26 +11,23 @@ document.addEventListener("DOMContentLoaded", function () {
     "Supreme","Tommy Hilfiger","Versace","Yeezy"
   ];
  
-  const brandList    = document.getElementById("brandList");
-  const brandSearch  = document.getElementById("brandSearch");
-  const alphabetDiv  = document.getElementById("alphabet");
+  const brandList   = document.getElementById("brandList");
+  const brandSearch = document.getElementById("brandSearch");
+  const alphabetDiv = document.getElementById("alphabet");
+  const brandCount  = document.getElementById("brandCount");
+  const allBtn      = document.querySelector(".alpha-btn[data-letter='all']");
  
-  /* Logo → torna alla home */
-  const logo = document.getElementById("logo");
-  if (logo) {
-    logo.addEventListener("click", () => {
-      window.location.href = "index.html";
-    });
-  }
+  let activeLetter = "all";
  
   /* ===========================
-     RENDER BRAND
+     RENDER
   =========================== */
   function renderBrandList(list) {
     brandList.innerHTML = "";
+    brandCount.textContent = list.length + " brand";
  
     if (list.length === 0) {
-      brandList.innerHTML = "<p style='color:var(--secondary)'>Nessun brand trovato</p>";
+      brandList.innerHTML = "<p class='no-results'>Nessun brand trovato</p>";
       return;
     }
  
@@ -38,40 +35,81 @@ document.addEventListener("DOMContentLoaded", function () {
       const div = document.createElement("div");
       div.classList.add("brand-item");
       div.textContent = b;
-      div.style.animationDelay = (i * 25) + "ms";
+      div.style.animationDelay = (i * 20) + "ms";
       brandList.appendChild(div);
     });
   }
  
   /* ===========================
-     ALFABETO A-Z
+     FILTRO
+  =========================== */
+  function applyFilter() {
+    const search = brandSearch.value.toLowerCase().trim();
+    let filtered = brands;
+ 
+    if (activeLetter !== "all") {
+      filtered = filtered.filter(b => b.toUpperCase().startsWith(activeLetter));
+    }
+    if (search) {
+      filtered = filtered.filter(b => b.toLowerCase().includes(search));
+    }
+ 
+    renderBrandList(filtered);
+  }
+ 
+  /* ===========================
+     BOTTONE "TUTTI"
+  =========================== */
+  allBtn.addEventListener("click", () => {
+    setActive(allBtn, "all");
+  });
+ 
+  /* ===========================
+     GENERA A-Z
   =========================== */
   "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach((letter, i) => {
     const btn = document.createElement("button");
+    btn.classList.add("alpha-btn");
+    btn.dataset.letter = letter;
     btn.textContent = letter;
-    btn.style.animationDelay = (i * 30) + "ms";
+    btn.style.animationDelay = (i * 25) + "ms";
+ 
+    // Grigi le lettere senza brand
+    const hasBrands = brands.some(b => b.toUpperCase().startsWith(letter));
+    if (!hasBrands) btn.classList.add("disabled");
  
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".alphabet button").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      brandSearch.value = "";
-      renderBrandList(brands.filter(b => b.toUpperCase().startsWith(letter)));
+      if (!hasBrands) return;
+      setActive(btn, letter);
     });
  
     alphabetDiv.appendChild(btn);
   });
  
+  function setActive(btn, letter) {
+    document.querySelectorAll(".alpha-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeLetter = letter;
+    brandSearch.value = "";
+    applyFilter();
+  }
+ 
   /* ===========================
      RICERCA LIVE
   =========================== */
   brandSearch.addEventListener("input", () => {
-    const val = brandSearch.value.toLowerCase();
-    document.querySelectorAll(".alphabet button").forEach(b => b.classList.remove("active"));
-    renderBrandList(brands.filter(b => b.toLowerCase().includes(val)));
+    // Deseleziona lettera se l'utente scrive
+    document.querySelectorAll(".alpha-btn").forEach(b => b.classList.remove("active"));
+    allBtn.classList.add("active");
+    activeLetter = "all";
+    applyFilter();
   });
  
-  /* Mostra tutti i brand all'avvio */
+  /* Logo → home */
+  const logo = document.getElementById("logo");
+  if (logo) logo.addEventListener("click", () => window.location.href = "index.html");
+ 
+  /* Avvio */
   renderBrandList(brands);
  
 });
- 
