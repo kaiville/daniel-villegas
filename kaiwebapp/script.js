@@ -290,14 +290,12 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     }
 
-    modal.style.display = "flex";
-    requestAnimationFrame(() => requestAnimationFrame(() => modal.classList.add("open")));
+    modal.classList.add("open");
   }
 
   function closeModalFn() {
     if (!modal) return;
     modal.classList.remove("open");
-    setTimeout(() => { modal.style.display = "none"; }, 350);
   }
 
   if (closeModal) closeModal.addEventListener("click", closeModalFn);
@@ -345,4 +343,4 @@ document.addEventListener("DOMContentLoaded", function () {
   /* Aggiorna contatore wishlist all'avvio */
   updateWishCount();
 
-});  
+});
