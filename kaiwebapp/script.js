@@ -19,6 +19,30 @@ const logo = document.getElementById(“logo”);
 if (logo) logo.addEventListener(“click”, () => window.scrollTo({ top: 0, behavior: “smooth” }));
 
 /* ===========================
+HAMBURGER MENU
+=========================== */
+const hamburger = document.getElementById(“hamburger”);
+const navLinks  = document.getElementById(“navLinks”);
+
+if (hamburger && navLinks) {
+hamburger.addEventListener(“click”, () => {
+hamburger.classList.toggle(“open”);
+navLinks.classList.toggle(“open”);
+});
+
+```
+/* Chiude il menu quando si clicca un link */
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("open");
+    navLinks.classList.remove("open");
+  });
+});
+```
+
+}
+
+/* ===========================
 WISHLIST (localStorage)
 =========================== */
 function getWishlist() {
