@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
       card.classList.add("product-card");
       card.dataset.category = product.category;
       card.dataset.brand    = product.brand;
-      card.style.animationDelay = (index * 40) + "ms";
+      card.style.animationDelay = Math.min(index * 40, 500) + "ms";
 
       card.innerHTML = `
         <div class="card-img-wrap">
@@ -345,4 +345,4 @@ document.addEventListener("DOMContentLoaded", function () {
   /* Aggiorna contatore wishlist all'avvio */
   updateWishCount();
 
-});
+});  
