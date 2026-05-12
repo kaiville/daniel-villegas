@@ -74,43 +74,78 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ===========================
-     DATI PRODOTTI
+     PRODOTTI FISSI
   =========================== */
-  const brands = [
-    "Adidas","Armani","Balenciaga","Bape","Bottega Veneta","Burberry",
-    "Calvin Klein","Canada Goose","Chrome Hearts","Converse","Dsquared2","Denim Tears",
-    "Diesel","Dior","Fear of God","Ferragamo","Gallery Dept","Givenchy",
-    "Gucci","Hermes","Hugo Boss","Jordan","Lanvin","Louis Vuitton","Levi's",
-    "Maison Margiela","McQ Alexander McQueen","Moncler","Moschino",
-    "New Balance","Nike","Off-White","Palm Angels","Prada",
-    "Ralph Lauren","Rick Owens","Rimowa","Stone Island",
-    "Supreme","Tommy Hilfiger","Versace","Yeezy"
+  const products = [
+
+    /* ---- MAGLIETTE ---- */
+    { name: "Nike Essential Tee",            brand: "Nike",            price: "€45",  category: "magliette", img: "img/products/nike-essential-tee.jpg" },
+    { name: "Nike Logo Tee",                 brand: "Nike",            price: "€50",  category: "magliette", img: "img/products/nike-logo-tee.jpg" },
+    { name: "Adidas Trefoil Tee",            brand: "Adidas",          price: "€40",  category: "magliette", img: "img/products/adidas-trefoil-tee.jpg" },
+    { name: "Adidas Originals Tee",          brand: "Adidas",          price: "€45",  category: "magliette", img: "img/products/adidas-originals-tee.jpg" },
+    { name: "Supreme Box Logo Tee",          brand: "Supreme",         price: "€160", category: "magliette", img: "img/products/supreme-box-logo-tee.jpg" },
+    { name: "Off-White Arrow Tee",           brand: "Off-White",       price: "€280", category: "magliette", img: "img/products/offwhite-arrow-tee.jpg" },
+    { name: "Gucci Logo Tee",                brand: "Gucci",           price: "€420", category: "magliette", img: "img/products/gucci-logo-tee.jpg" },
+    { name: "Palm Angels Burning Tee",       brand: "Palm Angels",     price: "€310", category: "magliette", img: "img/products/palmangels-burning-tee.jpg" },
+    { name: "Stone Island Patch Tee",        brand: "Stone Island",    price: "€120", category: "magliette", img: "img/products/stoneisland-patch-tee.jpg" },
+    { name: "Balenciaga Oversized Tee",      brand: "Balenciaga",      price: "€490", category: "magliette", img: "img/products/balenciaga-oversized-tee.jpg" },
+    { name: "Fear of God Essential Tee",     brand: "Fear of God",     price: "€95",  category: "magliette", img: "img/products/fog-essential-tee.jpg" },
+    { name: "Gallery Dept Paint Tee",        brand: "Gallery Dept",    price: "€220", category: "magliette", img: "img/products/gallerydept-paint-tee.jpg" },
+    { name: "Ralph Lauren Classic Tee",      brand: "Ralph Lauren",    price: "€75",  category: "magliette", img: "img/products/ralphlauren-classic-tee.jpg" },
+    { name: "Tommy Hilfiger Flag Tee",       brand: "Tommy Hilfiger",  price: "€55",  category: "magliette", img: "img/products/tommy-flag-tee.jpg" },
+    { name: "Calvin Klein CK Tee",           brand: "Calvin Klein",    price: "€60",  category: "magliette", img: "img/products/ck-tee.jpg" },
+
+    /* ---- FELPE ---- */
+    { name: "Nike Tech Fleece Hoodie",       brand: "Nike",            price: "€130", category: "felpe", img: "img/products/nike-tech-hoodie.jpg" },
+    { name: "Nike Club Crewneck",            brand: "Nike",            price: "€80",  category: "felpe", img: "img/products/nike-club-crew.jpg" },
+    { name: "Adidas Hoodie 3-Stripes",       brand: "Adidas",          price: "€85",  category: "felpe", img: "img/products/adidas-hoodie-3stripes.jpg" },
+    { name: "Supreme Box Logo Hoodie",       brand: "Supreme",         price: "€380", category: "felpe", img: "img/products/supreme-box-hoodie.jpg" },
+    { name: "Off-White Diag Hoodie",         brand: "Off-White",       price: "€520", category: "felpe", img: "img/products/offwhite-diag-hoodie.jpg" },
+    { name: "Stone Island Zip Hoodie",       brand: "Stone Island",    price: "€290", category: "felpe", img: "img/products/stoneisland-zip-hoodie.jpg" },
+    { name: "Fear of God Essentials Hoodie", brand: "Fear of God",     price: "€150", category: "felpe", img: "img/products/fog-essentials-hoodie.jpg" },
+    { name: "Balenciaga Logo Hoodie",        brand: "Balenciaga",      price: "€650", category: "felpe", img: "img/products/balenciaga-logo-hoodie.jpg" },
+    { name: "Palm Angels Classic Hoodie",    brand: "Palm Angels",     price: "€390", category: "felpe", img: "img/products/palmangels-classic-hoodie.jpg" },
+    { name: "Moncler Logo Crewneck",         brand: "Moncler",         price: "€420", category: "felpe", img: "img/products/moncler-logo-crew.jpg" },
+    { name: "Ralph Lauren Fleece Hoodie",    brand: "Ralph Lauren",    price: "€120", category: "felpe", img: "img/products/ralphlauren-fleece-hoodie.jpg" },
+    { name: "Tommy Hilfiger Zip Hoodie",     brand: "Tommy Hilfiger",  price: "€110", category: "felpe", img: "img/products/tommy-zip-hoodie.jpg" },
+
+    /* ---- JEANS ---- */
+    { name: "Levi's 501 Original",           brand: "Levi's",          price: "€110", category: "jeans", img: "img/products/levis-501.jpg" },
+    { name: "Levi's 514 Straight",           brand: "Levi's",          price: "€100", category: "jeans", img: "img/products/levis-514.jpg" },
+    { name: "Diesel D-Macs Jeans",           brand: "Diesel",          price: "€180", category: "jeans", img: "img/products/diesel-dmacs.jpg" },
+    { name: "Diesel D-Strukt Slim",          brand: "Diesel",          price: "€160", category: "jeans", img: "img/products/diesel-dstrukt.jpg" },
+    { name: "Dsquared2 Cool Guy Jeans",      brand: "Dsquared2",       price: "€380", category: "jeans", img: "img/products/dsquared-coolguy.jpg" },
+    { name: "Dsquared2 Skater Jeans",        brand: "Dsquared2",       price: "€350", category: "jeans", img: "img/products/dsquared-skater.jpg" },
+    { name: "Armani Exchange Slim Jeans",    brand: "Armani",          price: "€140", category: "jeans", img: "img/products/armani-slim-jeans.jpg" },
+    { name: "Calvin Klein Straight Jeans",   brand: "Calvin Klein",    price: "€120", category: "jeans", img: "img/products/ck-straight-jeans.jpg" },
+    { name: "Givenchy Destroyed Jeans",      brand: "Givenchy",        price: "€490", category: "jeans", img: "img/products/givenchy-destroyed-jeans.jpg" },
+    { name: "Bape Shark Denim",              brand: "Bape",            price: "€320", category: "jeans", img: "img/products/bape-shark-denim.jpg" },
+
+    /* ---- PANTALONI ---- */
+    { name: "Nike Jogger Tech Fleece",       brand: "Nike",            price: "€120", category: "pantaloni", img: "img/products/nike-jogger-tech.jpg" },
+    { name: "Nike Woven Pants",              brand: "Nike",            price: "€90",  category: "pantaloni", img: "img/products/nike-woven-pants.jpg" },
+    { name: "Adidas Track Pants",            brand: "Adidas",          price: "€80",  category: "pantaloni", img: "img/products/adidas-track-pants.jpg" },
+    { name: "Adidas SST Pants",              brand: "Adidas",          price: "€85",  category: "pantaloni", img: "img/products/adidas-sst-pants.jpg" },
+    { name: "Fear of God Sweatpants",        brand: "Fear of God",     price: "€180", category: "pantaloni", img: "img/products/fog-sweatpants.jpg" },
+    { name: "Palm Angels Track Pants",       brand: "Palm Angels",     price: "€340", category: "pantaloni", img: "img/products/palmangels-track-pants.jpg" },
+    { name: "Stone Island Cargo Pants",      brand: "Stone Island",    price: "€310", category: "pantaloni", img: "img/products/stoneisland-cargo.jpg" },
+    { name: "Hugo Boss Chino",               brand: "Hugo Boss",       price: "€130", category: "pantaloni", img: "img/products/hugoboss-chino.jpg" },
+    { name: "Balenciaga Track Pants",        brand: "Balenciaga",      price: "€580", category: "pantaloni", img: "img/products/balenciaga-track-pants.jpg" },
+    { name: "Rick Owens Drawstring Pants",   brand: "Rick Owens",      price: "€620", category: "pantaloni", img: "img/products/rickowens-drawstring.jpg" },
+
+    /* ---- ALTRI ---- */
+    { name: "Nike Air Cap",                  brand: "Nike",            price: "€35",  category: "altri", img: "img/products/nike-air-cap.jpg" },
+    { name: "Adidas Beanie",                 brand: "Adidas",          price: "€30",  category: "altri", img: "img/products/adidas-beanie.jpg" },
+    { name: "Supreme 6-Panel Cap",           brand: "Supreme",         price: "€120", category: "altri", img: "img/products/supreme-6panel.jpg" },
+    { name: "Gucci GG Belt",                 brand: "Gucci",           price: "€380", category: "altri", img: "img/products/gucci-gg-belt.jpg" },
+    { name: "Louis Vuitton Belt",            brand: "Louis Vuitton",   price: "€420", category: "altri", img: "img/products/lv-belt.jpg" },
+    { name: "Off-White Industrial Belt",     brand: "Off-White",       price: "€260", category: "altri", img: "img/products/offwhite-belt.jpg" },
+    { name: "Rimowa Classic Cabin",          brand: "Rimowa",          price: "€750", category: "altri", img: "img/products/rimowa-cabin.jpg" },
+    { name: "Stone Island Beanie",           brand: "Stone Island",    price: "€80",  category: "altri", img: "img/products/stoneisland-beanie.jpg" },
+    { name: "Canada Goose Beanie",           brand: "Canada Goose",    price: "€95",  category: "altri", img: "img/products/canadagoose-beanie.jpg" },
+    { name: "New Balance 574 Cap",           brand: "New Balance",     price: "€40",  category: "altri", img: "img/products/nb-574-cap.jpg" },
+
   ];
-
-  const productTypes = [
-    "Tee","Oversized Tee","Street Hoodie","Classic Hoodie",
-    "Logo Tee","Zip Hoodie","Street Jacket","Crewneck","Beanie","Cap"
-  ];
-
-  const categories = ["magliette","felpe","jeans","pantaloni","altri"];
-
-  const productsContainer = document.getElementById("productsContainer");
-  const products = [];
-
-  for (let i = 0; i < 80; i++) {
-    const brand    = brands[Math.floor(Math.random() * brands.length)];
-    const type     = productTypes[Math.floor(Math.random() * productTypes.length)];
-    const price    = Math.floor(Math.random() * 250) + 40;
-    const category = categories[Math.floor(Math.random() * categories.length)];
-    const imgIndex = Math.floor(Math.random() * 5) + 1;
-    products.push({
-      name:     brand + " " + type,
-      brand:    brand,
-      price:    "€" + price,
-      category: category,
-      img:      "img/products/product" + imgIndex + ".jpg"
-    });
-  }
 
   /* ===========================
      RENDER PRODOTTI
