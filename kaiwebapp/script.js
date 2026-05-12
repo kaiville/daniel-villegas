@@ -40,8 +40,37 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ===========================
-     WISHLIST (localStorage)
+     CARRELLO (localStorage)
   =========================== */
+  function getCart() {
+    return JSON.parse(localStorage.getItem("cart") || "[]");
+  }
+
+  function saveCart(list) {
+    localStorage.setItem("cart", JSON.stringify(list));
+  }
+
+  function addToCart(product, taglia) {
+    let cart = getCart();
+    const existing = cart.find(i => i.name === product.name && i.taglia === taglia);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ ...product, taglia, qty: 1 });
+    }
+    saveCart(cart);
+    updateCartCount();
+  }
+
+  function updateCartCount() {
+    const count = getCart().reduce((sum, i) => sum + i.qty, 0);
+    document.querySelectorAll(".cart-count").forEach(el => {
+      el.textContent = count;
+      el.style.display = count > 0 ? "flex" : "none";
+    });
+  }
+
+
   function getWishlist() {
     return JSON.parse(localStorage.getItem("wishlist") || "[]");
   }
@@ -298,12 +327,39 @@ document.addEventListener("DOMContentLoaded", function () {
     if (modalExtra) modalExtra.innerHTML = extraHTML;
 
     /* Selezione taglia */
+    let tagliaSelezionata = null;
     modalExtra.querySelectorAll(".taglia-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         modalExtra.querySelectorAll(".taglia-btn").forEach(b => b.classList.remove("selected"));
         btn.classList.add("selected");
+        tagliaSelezionata = btn.textContent;
       });
     });
+
+    /* Bottone Acquista */
+    const buyBtn = modal.querySelector(".buy-btn");
+    if (buyBtn) {
+      buyBtn.onclick = () => {
+        if (!tagliaSelezionata) {
+          buyBtn.textContent = "Seleziona una taglia!";
+          buyBtn.classList.add("buy-error");
+          setTimeout(() => {
+            buyBtn.textContent = "Aggiungi al carrello";
+            buyBtn.classList.remove("buy-error");
+          }, 1500);
+          return;
+        }
+        addToCart(product, tagliaSelezionata);
+        buyBtn.textContent = "✓ Aggiunto!";
+        buyBtn.classList.add("buy-success");
+        setTimeout(() => {
+          buyBtn.textContent = "Aggiungi al carrello";
+          buyBtn.classList.remove("buy-success");
+        }, 1500);
+      };
+      buyBtn.textContent = "Aggiungi al carrello";
+      buyBtn.classList.remove("buy-success", "buy-error");
+    }
 
     /* Wishlist */
     if (modalWish) {
@@ -375,7 +431,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* Aggiorna contatore wishlist all'avvio */
+  /* Aggiorna contatori all'avvio */
   updateWishCount();
+  updateCartCount();
 
 });
