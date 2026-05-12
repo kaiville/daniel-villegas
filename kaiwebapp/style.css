@@ -683,7 +683,6 @@ body.dark .brand-item:hover {
   z-index: 999;
   transition: background 0.3s ease;
   padding: 1rem;
-  overflow-y: auto;
 }
 
 .modal.open {
@@ -702,7 +701,6 @@ body.dark .brand-item:hover {
   position: relative;
   max-height: 85vh;
   overflow-y: auto;
-  margin: auto;
 
   transform: scale(0.88) translateY(24px);
   opacity: 0;
