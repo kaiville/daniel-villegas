@@ -662,32 +662,203 @@ body.dark .brand-item:hover {
 /* ===========================
    MODALE PRODOTTO
 =========================== */
-.modal {
+/* ===========================
+   DRAWER LATERALE
+=========================== */
+.drawer-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  padding: 1rem;
+  background: rgba(0,0,0,0.5);
+  z-index: 9998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.modal.open {
-  display: flex;
+.drawer-overlay.open {
+  display: block;
+  opacity: 1;
 }
 
-.modal-content {
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 480px;
+  max-width: 100vw;
   background: var(--surface);
   color: var(--text);
+  z-index: 9999;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-close {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  z-index: 1;
+}
+
+.drawer-close:hover {
+  background: var(--text);
+  color: var(--surface);
+  transform: rotate(90deg);
+}
+
+.drawer-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.drawer-body {
   padding: 1.5rem;
-  border-radius: 18px;
-  max-width: 420px;
-  width: 90%;
-  text-align: left;
-  max-height: 85vh;
   overflow-y: auto;
-  animation: popIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.drawer-brand {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--secondary);
+}
+
+.drawer-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.drawer-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.drawer-divider {
+  height: 1px;
+  background: var(--border);
+}
+
+.drawer-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.drawer-taglie {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.drawer-taglia-btn {
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.drawer-taglia-btn:hover {
+  border-color: var(--text);
+  transform: translateY(-1px);
+}
+
+.drawer-taglia-btn.selected {
+  background: var(--text);
+  color: var(--surface);
+  border-color: var(--text);
+}
+
+.drawer-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.drawer-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.drawer-wish-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: #bbb;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.drawer-wish-btn:hover { color: #e00; border-color: #e00; }
+.drawer-wish-btn.active { color: #e00; border-color: #e00; }
+.drawer-wish-btn.pop { animation: heartPop 0.3s ease; }
+
+.drawer-buy-btn {
+  flex: 1;
+  padding: 0.9rem;
+  border-radius: 12px;
+  border: none;
+  background: var(--text);
+  color: var(--surface);
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.drawer-buy-btn:hover { opacity: 0.82; transform: translateY(-1px); }
+.drawer-buy-btn.buy-success { background: #1a9e5a; }
+.drawer-buy-btn.buy-error   { background: #e00; }
+
+@media (max-width: 520px) {
+  .drawer { width: 100vw; }
+  .drawer-img { height: 240px; }
 }
 
 /* Header con X e cuore */
