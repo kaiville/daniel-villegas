@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ===========================
-     DARK MODe
+     DARK MODE
   =========================== */
   const toggleBtn = document.getElementById("darkToggle");
   if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark");
@@ -387,12 +387,16 @@ document.addEventListener("DOMContentLoaded", function () {
     drawer.classList.add("open");
     drawerOverlay.classList.add("open");
     document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.width = "100%";
   }
 
   function closeDrawer() {
     drawer.classList.remove("open");
     drawerOverlay.classList.remove("open");
     document.body.style.overflow = "";
+    document.body.style.position = "";
+    document.body.style.width = "";
   }
 
   if (drawerClose)   drawerClose.addEventListener("click", closeDrawer);
