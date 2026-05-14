@@ -1786,15 +1786,3 @@ body.dark .cart-count { background: #fff; color: #111; }
   padding: 20px;
 }
 
-.modal-content {
-  background: var(--surface);
-  color: var(--text);
-  padding: 2rem;
-  border-radius: var(--radius);
-  width: 100%;
-  max-width: 500px;
-  max-height: 90vh;   /* Impedisce al popup di essere più alto dello schermo */
-  overflow-y: auto;   /* Se il contenuto è lungo, scorri solo dentro il popup */
-  position: relative;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-}
