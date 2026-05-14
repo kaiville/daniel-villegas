@@ -413,8 +413,11 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     }
 
-    modal.classList.add("open");
-    document.body.style.overflow = "hidden";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => {
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }, 400);
   }
 
   function closeModalFn() {
