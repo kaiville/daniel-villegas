@@ -75,27 +75,28 @@
     <div class="footer-bottom">© 2026 Wearz</div>
   </footer>
 
-  <!-- MODALE PRODOTTO -->
-  <div id="productModal" class="modal">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <span id="closeModal" class="close-modal">&times;</span>
-        <button id="modalWish" class="modal-wish-icon">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+  <!-- DRAWER LATERALE -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer" id="drawer">
+    <button class="drawer-close" id="drawerClose">&times;</button>
+    <img class="drawer-img" id="drawerImg" src="" alt="">
+    <div class="drawer-body">
+      <div>
+        <span class="drawer-brand" id="drawerBrand"></span>
+        <h2 class="drawer-title" id="drawerTitle"></h2>
+      </div>
+      <div class="drawer-price" id="drawerPrice"></div>
+      <div class="drawer-divider"></div>
+      <div id="drawerExtra"></div>
+      <div class="drawer-divider"></div>
+      <div class="drawer-actions">
+        <button class="drawer-wish-btn" id="drawerWish">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
           </svg>
         </button>
+        <button class="drawer-buy-btn" id="drawerBuy">Aggiungi al carrello</button>
       </div>
-
-      <img id="modalImg" src="" alt="">
-      <h2 id="modalTitle"></h2>
-      <p id="modalPrice" class="modal-price"></p>
-
-      <div id="modalExtra"></div>
-
-      <button class="buy-btn">Acquista</button>
-
     </div>
   </div>
 
