@@ -192,20 +192,26 @@ document.addEventListener("DOMContentLoaded", function () {
       card.style.animationDelay = Math.min(index * 40, 500) + "ms";
 
       card.innerHTML = `
-        <div class="card-img-wrap">
-          <img src="${product.img}" alt="${product.name}" onerror="this.style.display='none'">
-          <button class="wish-btn ${wished ? "active" : ""}" data-name="${product.name}" title="Aggiungi ai preferiti">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="${wished ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
-          </button>
-        </div>
-        <div class="card-info">
-          <span class="card-category">${product.category}</span>
-          <h3>${product.name}</h3>
-          <p>${product.price}</p>
-        </div>
-      `;
+  <div class="card-img-wrap">
+    <img src="${product.img}" alt="${product.name}" onerror="this.style.display='none'">
+
+    <button class="wish-btn ${wished ? "active" : ""}" data-name="${product.name}">
+      <svg viewBox="0 0 24 24" width="18" height="18"
+        fill="${wished ? "currentColor" : "none"}"
+        stroke="currentColor"
+        stroke-width="2">
+
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="card-info">
+    <span class="card-category">${product.category}</span>
+    <h3>${product.name}</h3>
+    <p>${product.price}</p>
+  </div>
+`;
 
       /* Click cuore — non apre modale */
       card.querySelector(".wish-btn").addEventListener("click", (e) => {
@@ -308,21 +314,33 @@ document.addEventListener("DOMContentLoaded", function () {
     modalPrice.textContent = product.price;
 
     /* Costruisce il contenuto extra */
-    let extraHTML = `
-      <div class="modal-details">
-        <div class="modal-taglie">
-          <span class="modal-label">Taglia</span>
-          <div class="taglie-list">
-            ${details.taglie.map(t => `<button class="taglia-btn">${t}</button>`).join("")}
-          </div>
-        </div>
-        <div class="modal-materiale">
-          <span class="modal-label">Materiale</span>
-          <span class="modal-value">${details.materiale}</span>
-        </div>
-        ${details.extra ? `<div class="modal-fit"><span class="modal-label">Fit</span><span class="modal-value">${details.extra}</span></div>` : ""}
+ let extraHTML = `
+  <div class="modal-details">
+
+    <div class="modal-taglie">
+      <span class="modal-label">Taglia</span>
+
+      <div class="taglie-list">
+        ${details.taglie.map(t => `
+          <button class="taglia-btn">${t}</button>
+        `).join("")}
       </div>
-    `;
+    </div>
+
+    <div class="modal-materiale">
+      <span class="modal-label">Materiale</span>
+      <span class="modal-value">${details.materiale}</span>
+    </div>
+
+    ${details.extra ? `
+      <div class="modal-fit">
+        <span class="modal-label">Fit</span>
+        <span class="modal-value">${details.extra}</span>
+      </div>
+    ` : ""}
+
+  </div>
+`;
 
     if (modalExtra) modalExtra.innerHTML = extraHTML;
 
@@ -374,7 +392,7 @@ document.addEventListener("DOMContentLoaded", function () {
         modalWish.querySelector("svg").setAttribute("fill", active ? "currentColor" : "none");
         modalWish.classList.add("pop");
         setTimeout(() => modalWish.classList.remove("pop"), 300);
-        document.querySelectorAll(`.wish-btn[data-name="${product.name}"]`).forEach(btn => {
+       document.querySelectorAll(`.wish-btn[data-name="${product.name}"]`)
           btn.classList.toggle("active", active);
           btn.querySelector("svg").setAttribute("fill", active ? "currentColor" : "none");
         });
