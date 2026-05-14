@@ -36,6 +36,15 @@ document.addEventListener("DOMContentLoaded", function () {
       div.classList.add("brand-item");
       div.textContent = b;
       div.style.animationDelay = (i * 20) + "ms";
+      div.style.cursor = "pointer";
+
+      div.addEventListener("click", () => {
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+          window.location.href = "index.html?brand=" + encodeURIComponent(b);
+        }, 400);
+      });
+
       brandList.appendChild(div);
     });
   }
