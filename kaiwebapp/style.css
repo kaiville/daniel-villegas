@@ -654,23 +654,32 @@ body.dark .brand-item:hover {
 
 
 /* ===========================
-   MODALE PRODOTTO
+   MODALE PRODOTTO FIX
 =========================== */
+
 .modal {
-  display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0);
+  display: flex;
   justify-content: center;
   align-items: center;
+
+  background: rgb(0 0 0 / 0%);
   z-index: 999;
-  transition: background 0.3s ease;
   padding: 1rem;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: background 0.3s ease, opacity 0.3s ease;
 }
 
 .modal.open {
-  display: flex;
   background: rgba(0,0,0,0.6);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .modal-content {
@@ -694,7 +703,6 @@ body.dark .brand-item:hover {
   transform: scale(1) translateY(0);
   opacity: 1;
 }
-
 /* Header con X e cuore */
 .modal-header {
   display: flex;
