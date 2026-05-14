@@ -235,6 +235,38 @@ document.addEventListener("DOMContentLoaded", function () {
   renderProducts(products);
 
   /* ===========================
+     FILTRO DA URL (?brand=Nike)
+  =========================== */
+  const urlParams  = new URLSearchParams(window.location.search);
+  const brandParam = urlParams.get("brand");
+
+  if (brandParam) {
+    const filtered = products.filter(p => p.brand === brandParam);
+    renderProducts(filtered);
+
+    /* Mostra banner con nome brand e bottone reset */
+    const catalogo = document.getElementById("catalogo");
+    const banner = document.createElement("div");
+    banner.classList.add("brand-filter-banner");
+    banner.innerHTML = `
+      <span>Stai vedendo: <strong>${brandParam}</strong></span>
+      <button id="resetBrandFilter">✕ Mostra tutti</button>
+    `;
+    catalogo.insertBefore(banner, catalogo.querySelector(".product-search"));
+
+    document.getElementById("resetBrandFilter").addEventListener("click", () => {
+      banner.remove();
+      renderProducts(products);
+      window.history.replaceState({}, "", "index.html");
+    });
+
+    /* Scrolla al catalogo */
+    setTimeout(() => {
+      document.getElementById("catalogo").scrollIntoView({ behavior: "smooth" });
+    }, 300);
+  }
+
+  /* ===========================
      FILTRO CATEGORIE
   =========================== */
   const tabButtons = document.querySelectorAll(".tab-btn");
