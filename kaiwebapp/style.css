@@ -666,14 +666,15 @@ body.dark .brand-item:hover {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0);
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
   z-index: 9999;
-  transition: background 0.3s ease;
+  padding: 1rem;
 }
 
 .modal.open {
-  display: block;
-  background: rgba(0,0,0,0.6);
+  display: flex;
 }
 
 .modal-content {
@@ -684,20 +685,9 @@ body.dark .brand-item:hover {
   max-width: 420px;
   width: 90%;
   text-align: left;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.88);
   max-height: 85vh;
   overflow-y: auto;
-  opacity: 0;
-  z-index: 10000;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
-}
-
-.modal.open .modal-content {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
+  animation: popIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* Header con X e cuore */
