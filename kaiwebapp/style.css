@@ -1771,3 +1771,42 @@ body.dark .cart-count { background: #fff; color: #111; }
   color: var(--text) !important;
   font-size: 1rem;
 }
+
+
+/* ===========================
+   BRAND FILTER BANNER
+=========================== */
+.brand-filter-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  animation: fadeUp 0.4s ease both;
+}
+
+.brand-filter-banner strong {
+  font-weight: 700;
+}
+
+.brand-filter-banner button {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 0.35rem 0.8rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.brand-filter-banner button:hover {
+  background: var(--text);
+  color: var(--surface);
+}
