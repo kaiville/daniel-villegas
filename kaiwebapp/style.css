@@ -1774,23 +1774,3 @@ body.dark .cart-count { background: #fff; color: #111; }
   color: var(--text) !important;
   font-size: 1rem;
 }
-/* ===========================
-   FIX POPUP CENTRATO
-=========================== */
-.modal {
-  display: none;      /* Nascosto di base, viene attivato dal JS */
-  position: fixed;    /* FISSA IL POPUP ALLO SCHERMO */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Sfondo scuro semitrasparente */
-  z-index: 9999;      /* Lo mette sopra a tutto */
-  
-  /* Centra il contenuto perfettamente */
-  display: flex;      
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
