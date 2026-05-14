@@ -221,9 +221,9 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => btn.classList.remove("pop"), 300);
       });
 
-      /* Click card → modale */
+      /* Click card → drawer */
       card.addEventListener("click", () => {
-        openModal(product);
+        openDrawer(product);
       });
 
       productsContainer.appendChild(card);
@@ -291,144 +291,113 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ===========================
-     MODALE PRODOTTO
+     DRAWER LATERALE
   =========================== */
-  const modal      = document.getElementById("productModal");
-  const modalImg   = document.getElementById("modalImg");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalPrice = document.getElementById("modalPrice");
-  const modalWish  = document.getElementById("modalWish");
-  const modalExtra = document.getElementById("modalExtra");
-  const closeModal = document.getElementById("closeModal");
+  const drawer        = document.getElementById("drawer");
+  const drawerOverlay = document.getElementById("drawerOverlay");
+  const drawerClose   = document.getElementById("drawerClose");
+  const drawerImg     = document.getElementById("drawerImg");
+  const drawerBrand   = document.getElementById("drawerBrand");
+  const drawerTitle   = document.getElementById("drawerTitle");
+  const drawerPrice   = document.getElementById("drawerPrice");
+  const drawerExtra   = document.getElementById("drawerExtra");
+  const drawerWish    = document.getElementById("drawerWish");
+  const drawerBuy     = document.getElementById("drawerBuy");
 
-  /* Info extra per categoria */
   const categoryDetails = {
-    magliette: {
-      taglie:    ["S","M","L","XL","2XL"],
-      materiale: "100% Cotone",
-      extra:     null
-    },
-    felpe: {
-      taglie:    ["S","M","L","XL","2XL"],
-      materiale: "80% Cotone, 20% Poliestere",
-      extra:     null
-    },
-    jeans: {
-      taglie:    ["28","30","32","34","36"],
-      materiale: "98% Denim, 2% Elastan",
-      extra:     "Fit: Regular"
-    },
-    pantaloni: {
-      taglie:    ["S","M","L","XL"],
-      materiale: "Misto Cotone",
-      extra:     "Fit: Relaxed"
-    },
-    altri: {
-      taglie:    ["Taglia unica"],
-      materiale: "Materiale misto",
-      extra:     null
-    }
+    magliette: { taglie: ["S","M","L","XL","2XL"], materiale: "100% Cotone", extra: null },
+    felpe:     { taglie: ["S","M","L","XL","2XL"], materiale: "80% Cotone, 20% Poliestere", extra: null },
+    jeans:     { taglie: ["28","30","32","34","36"], materiale: "98% Denim, 2% Elastan", extra: "Fit: Regular" },
+    pantaloni: { taglie: ["S","M","L","XL"], materiale: "Misto Cotone", extra: "Fit: Relaxed" },
+    altri:     { taglie: ["Taglia unica"], materiale: "Materiale misto", extra: null }
   };
 
-  function openModal(product) {
-    if (!modal) return;
-
+  function openDrawer(product) {
     const details = categoryDetails[product.category] || categoryDetails.altri;
 
-    modalImg.src           = product.img;
-    modalTitle.textContent = product.name;
-    modalPrice.textContent = product.price;
+    drawerImg.src          = product.img;
+    drawerBrand.textContent = product.brand;
+    drawerTitle.textContent = product.name;
+    drawerPrice.textContent = product.price;
 
-    /* Costruisce il contenuto extra */
-    let extraHTML = `
-      <div class="modal-details">
-        <div class="modal-taglie">
-          <span class="modal-label">Taglia</span>
-          <div class="taglie-list">
-            ${details.taglie.map(t => `<button class="taglia-btn">${t}</button>`).join("")}
-          </div>
+    drawerExtra.innerHTML = `
+      <div>
+        <span class="drawer-label">Taglia</span>
+        <div class="drawer-taglie">
+          ${details.taglie.map(t => `<button class="drawer-taglia-btn">${t}</button>`).join("")}
         </div>
-        <div class="modal-materiale">
-          <span class="modal-label">Materiale</span>
-          <span class="modal-value">${details.materiale}</span>
-        </div>
-        ${details.extra ? `<div class="modal-fit"><span class="modal-label">Fit</span><span class="modal-value">${details.extra}</span></div>` : ""}
       </div>
+      <div>
+        <span class="drawer-label">Materiale</span>
+        <span class="drawer-value">${details.materiale}</span>
+      </div>
+      ${details.extra ? `<div><span class="drawer-label">Fit</span><span class="drawer-value">${details.extra}</span></div>` : ""}
     `;
-
-    if (modalExtra) modalExtra.innerHTML = extraHTML;
 
     /* Selezione taglia */
     let tagliaSelezionata = null;
-    modalExtra.querySelectorAll(".taglia-btn").forEach(btn => {
+    drawerExtra.querySelectorAll(".drawer-taglia-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        modalExtra.querySelectorAll(".taglia-btn").forEach(b => b.classList.remove("selected"));
+        drawerExtra.querySelectorAll(".drawer-taglia-btn").forEach(b => b.classList.remove("selected"));
         btn.classList.add("selected");
         tagliaSelezionata = btn.textContent;
       });
     });
 
-    /* Bottone Acquista */
-    const buyBtn = modal.querySelector(".buy-btn");
-    if (buyBtn) {
-      buyBtn.onclick = () => {
-        if (!tagliaSelezionata) {
-          buyBtn.textContent = "Seleziona una taglia!";
-          buyBtn.classList.add("buy-error");
-          setTimeout(() => {
-            buyBtn.textContent = "Aggiungi al carrello";
-            buyBtn.classList.remove("buy-error");
-          }, 1500);
-          return;
-        }
-        addToCart(product, tagliaSelezionata);
-        buyBtn.textContent = "✓ Aggiunto!";
-        buyBtn.classList.add("buy-success");
-        setTimeout(() => {
-          buyBtn.textContent = "Aggiungi al carrello";
-          buyBtn.classList.remove("buy-success");
-        }, 1500);
-      };
-      buyBtn.textContent = "Aggiungi al carrello";
-      buyBtn.classList.remove("buy-success", "buy-error");
-    }
-
     /* Wishlist */
-    if (modalWish) {
-      const wished = isWished(product.name);
-      modalWish.classList.toggle("active", wished);
-      modalWish.querySelector("svg").setAttribute("fill", wished ? "currentColor" : "none");
+    const wished = isWished(product.name);
+    drawerWish.classList.toggle("active", wished);
+    drawerWish.querySelector("svg").setAttribute("fill", wished ? "currentColor" : "none");
 
-      modalWish.onclick = () => {
-        toggleWish(product);
-        const active = isWished(product.name);
-        modalWish.classList.toggle("active", active);
-        modalWish.querySelector("svg").setAttribute("fill", active ? "currentColor" : "none");
-        modalWish.classList.add("pop");
-        setTimeout(() => modalWish.classList.remove("pop"), 300);
-        document.querySelectorAll(`.wish-btn[data-name="${product.name}"]`).forEach(btn => {
-          btn.classList.toggle("active", active);
-          btn.querySelector("svg").setAttribute("fill", active ? "currentColor" : "none");
-        });
-      };
-    }
+    drawerWish.onclick = () => {
+      toggleWish(product);
+      const active = isWished(product.name);
+      drawerWish.classList.toggle("active", active);
+      drawerWish.querySelector("svg").setAttribute("fill", active ? "currentColor" : "none");
+      drawerWish.classList.add("pop");
+      setTimeout(() => drawerWish.classList.remove("pop"), 300);
+      document.querySelectorAll(`.wish-btn[data-name="${product.name}"]`).forEach(btn => {
+        btn.classList.toggle("active", active);
+        btn.querySelector("svg").setAttribute("fill", active ? "currentColor" : "none");
+      });
+    };
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setTimeout(() => {
-      modal.classList.add("open");
-      document.body.style.overflow = "hidden";
-    }, 400);
+    /* Carrello */
+    drawerBuy.textContent = "Aggiungi al carrello";
+    drawerBuy.className = "drawer-buy-btn";
+    drawerBuy.onclick = () => {
+      if (!tagliaSelezionata) {
+        drawerBuy.textContent = "Seleziona una taglia!";
+        drawerBuy.classList.add("buy-error");
+        setTimeout(() => {
+          drawerBuy.textContent = "Aggiungi al carrello";
+          drawerBuy.classList.remove("buy-error");
+        }, 1500);
+        return;
+      }
+      addToCart(product, tagliaSelezionata);
+      drawerBuy.textContent = "✓ Aggiunto!";
+      drawerBuy.classList.add("buy-success");
+      setTimeout(() => {
+        drawerBuy.textContent = "Aggiungi al carrello";
+        drawerBuy.classList.remove("buy-success");
+      }, 1500);
+    };
+
+    drawer.classList.add("open");
+    drawerOverlay.classList.add("open");
+    document.body.style.overflow = "hidden";
   }
 
-  function closeModalFn() {
-    if (!modal) return;
-    modal.classList.remove("open");
+  function closeDrawer() {
+    drawer.classList.remove("open");
+    drawerOverlay.classList.remove("open");
     document.body.style.overflow = "";
   }
 
-  if (closeModal) closeModal.addEventListener("click", closeModalFn);
-  window.addEventListener("click", e => { if (e.target === modal) closeModalFn(); });
-  document.addEventListener("keydown", e => { if (e.key === "Escape") closeModalFn(); });
+  if (drawerClose)   drawerClose.addEventListener("click", closeDrawer);
+  if (drawerOverlay) drawerOverlay.addEventListener("click", closeDrawer);
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
 
   /* ===========================
      FRECCIA TORNA SU
