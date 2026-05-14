@@ -431,18 +431,7 @@ body.dark .product-card .card-img-wrap {
   transition: transform 0.4s ease;
 }
 
-/* Se l'immagine non carica, mostra un'icona al centro */
-.product-card .card-img-wrap::after {
-  content: "👕";
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  pointer-events: none;
-  opacity: 0.25;
-}
+/* placeholder rimosso */
 
 .product-card:hover .card-img-wrap img {
   transform: scale(1.07);
