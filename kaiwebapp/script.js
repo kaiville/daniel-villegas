@@ -382,11 +382,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     modal.classList.add("open");
+    document.body.style.overflow = "hidden";
   }
 
   function closeModalFn() {
     if (!modal) return;
     modal.classList.remove("open");
+    document.body.style.overflow = "";
   }
 
   if (closeModal) closeModal.addEventListener("click", closeModalFn);
