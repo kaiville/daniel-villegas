@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ===========================
-     FILTRO
+     FILTRI
   =========================== */
   function applyFilter() {
     const search = brandSearch.value.toLowerCase().trim();
