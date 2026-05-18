@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalogo</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-name" id="store-name">Bottega Verde</span>
+        <span class="brand-category" id="store-category">Cosmetici naturali</span>
+      </div>
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link active"><span>Catalogo</span></a>
+        <a href="carrello.html" class="nav-link">
+          <span>Carrello</span>
+          <span class="cart-badge" id="cart-badge" style="display:none;">0</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="catalog-hero">
+    <h1 id="hero-title">Il nostro catalogo</h1>
+    <p id="hero-subtitle">Scopri tutti i prodotti</p>
+  </section>
+
+  <!-- ===== MAIN CATALOG ===== -->
+  <main class="page-main">
+    <div class="container">
+
+      <!-- Barra ricerca e ordinamento -->
+      <div class="catalog-controls">
+        <input
+          id="search-input"
+          class="search-input"
+          type="search"
+          placeholder="Cerca prodotto..."
+          aria-label="Cerca prodotto"
+        />
+        <select id="sort-select" class="sort-select" aria-label="Ordina per">
+          <option value="default">Ordine predefinito</option>
+          <option value="price-asc">Prezzo: crescente</option>
+          <option value="price-desc">Prezzo: decrescente</option>
+          <option value="name-asc">Nome A→Z</option>
+          <option value="name-desc">Nome Z→A</option>
+        </select>
+      </div>
+
+      <!-- Griglia prodotti -->
+      <section class="products-grid" id="products-grid">
+        <!-- Le card vengono generate da JavaScript -->
+        <div class="spinner-wrap"><div class="spinner"></div></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      &copy; <span id="footer-year"></span> <span id="footer-name">Bottega Verde</span> — Tutti i diritti riservati
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/catalog.js"></script>
+</body>
+</html>
