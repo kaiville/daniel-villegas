@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
-  <rect width="600" height="600" fill="#EDE7DA"/>
-  <rect x="200" y="180" width="200" height="240" rx="16" fill="#D5CCBA"/>
-  <circle cx="300" cy="150" r="40" fill="#C9A84C" opacity=".35"/>
-  <rect x="240" y="260" width="120" height="12" rx="6" fill="#C9A84C" opacity=".4"/>
-  <rect x="260" y="282" width="80"  height="8"  rx="4" fill="#9BA89F" opacity=".5"/>
-  <text x="300" y="460" text-anchor="middle" font-family="serif" font-size="16" fill="#9BA89F" letter-spacing="4">IMMAGINE</text>
-</svg>
